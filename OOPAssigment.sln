@@ -25,7 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meetlat", "Art1ClassDateTim
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pokemon", "Pokemon", "{8F91039A-2AD6-4248-852E-849447F377DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokemon Tester", "Pokemon\Pokemon Tester.csproj", "{A92AD4CF-C115-4494-8B66-502F00C7BE33}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pokemon Tester", "Art1ClassDateTime\Pokemon\Pokemon Tester.csproj", "{A92AD4CF-C115-4494-8B66-502F00C7BE33}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
