@@ -39,6 +39,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HetDierenrijkOOP", "HetDier
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HetDierenrijk", "Art1ClassDateTime\HetDierenrijk\HetDierenrijk.csproj", "{81628437-4D9B-42F5-9917-C0E4CEF25F41}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BallspelMetOverervingOOP", "BallspelMetOverervingOOP", "{AFDA2604-9A5A-4D58-B07B-3728CAD25777}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ballspel", "Art1ClassDateTime\Ballspel\Ballspel.csproj", "{7556C6BA-2ED7-42A4-B1C4-78C4B08012C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +85,10 @@ Global
 		{81628437-4D9B-42F5-9917-C0E4CEF25F41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81628437-4D9B-42F5-9917-C0E4CEF25F41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81628437-4D9B-42F5-9917-C0E4CEF25F41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7556C6BA-2ED7-42A4-B1C4-78C4B08012C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7556C6BA-2ED7-42A4-B1C4-78C4B08012C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7556C6BA-2ED7-42A4-B1C4-78C4B08012C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7556C6BA-2ED7-42A4-B1C4-78C4B08012C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -95,6 +103,7 @@ Global
 		{CC5A0E72-8FBC-4C74-B570-709B1E7FB0DF} = {6D7193E2-06D7-4306-B992-CC2053B99911}
 		{FCDABB1F-B9D5-4251-BBEA-9E831EB074FC} = {34439DB5-9750-4FF8-9736-050D272A6717}
 		{81628437-4D9B-42F5-9917-C0E4CEF25F41} = {A3B0828E-7615-453F-ADAF-BC6FDC19ECD7}
+		{7556C6BA-2ED7-42A4-B1C4-78C4B08012C0} = {AFDA2604-9A5A-4D58-B07B-3728CAD25777}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3AE745C4-CA0C-4248-8123-3CC6138AF099}
