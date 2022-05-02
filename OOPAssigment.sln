@@ -43,6 +43,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BallspelMetOverervingOOP", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ballspel", "Art1ClassDateTime\Ballspel\Ballspel.csproj", "{7556C6BA-2ED7-42A4-B1C4-78C4B08012C0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SingleResponsibilityPrincipleOOP", "SingleResponsibilityPrincipleOOP", "{55709F3D-9C84-4B2A-B8AF-AC8DDF3312A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleUI", "Art1ClassDateTime\ConsoleUI\ConsoleUI.csproj", "{3A052064-EDBD-41F5-84C6-E4A7380D4483}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -89,6 +93,10 @@ Global
 		{7556C6BA-2ED7-42A4-B1C4-78C4B08012C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7556C6BA-2ED7-42A4-B1C4-78C4B08012C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7556C6BA-2ED7-42A4-B1C4-78C4B08012C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A052064-EDBD-41F5-84C6-E4A7380D4483}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A052064-EDBD-41F5-84C6-E4A7380D4483}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A052064-EDBD-41F5-84C6-E4A7380D4483}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A052064-EDBD-41F5-84C6-E4A7380D4483}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -104,6 +112,7 @@ Global
 		{FCDABB1F-B9D5-4251-BBEA-9E831EB074FC} = {34439DB5-9750-4FF8-9736-050D272A6717}
 		{81628437-4D9B-42F5-9917-C0E4CEF25F41} = {A3B0828E-7615-453F-ADAF-BC6FDC19ECD7}
 		{7556C6BA-2ED7-42A4-B1C4-78C4B08012C0} = {AFDA2604-9A5A-4D58-B07B-3728CAD25777}
+		{3A052064-EDBD-41F5-84C6-E4A7380D4483} = {55709F3D-9C84-4B2A-B8AF-AC8DDF3312A7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3AE745C4-CA0C-4248-8123-3CC6138AF099}

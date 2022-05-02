@@ -10,8 +10,10 @@ namespace Ballspel
     {
         public int GetX()
         { return x; }
-        public int Y { get { return y; } }
-            private int x = 0;
+
+        public int GetY()
+        { return y; }
+        private int x = 0;
             private int y = 0;
             protected int vx = 0;
             protected int vy = 0;
@@ -53,7 +55,7 @@ namespace Ballspel
             static public bool CheckHit(Ball ball1, Ball ball2)
             {
 
-                if (ball1.GetX() == ball2.GetX() && ball1.Y == ball2.Y)
+                if (ball1.GetX() == ball2.GetX() && ball1.GetY() == ball2.GetY())
                     return true;
 
                 return false;
