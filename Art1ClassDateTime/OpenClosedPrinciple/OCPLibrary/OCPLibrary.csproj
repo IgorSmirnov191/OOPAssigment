@@ -46,9 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Accounts.cs" />
+    <Compile Include="Accounts\Accounts.cs" />
+    <Compile Include="Applicants\TechnicianModel.cs" />
     <Compile Include="EmployeeModel.cs" />
-    <Compile Include="PersonModel.cs" />
+    <Compile Include="Accounts\ExecutiveAccounts.cs" />
+    <Compile Include="Applicants\ExecutiveModel.cs" />
+    <Compile Include="Accounts\IAccounts.cs" />
+    <Compile Include="Applicants\IApplicantModel.cs" />
+    <Compile Include="Accounts\ManagerAccounts.cs" />
+    <Compile Include="Applicants\ManagerModel.cs" />
+    <Compile Include="Applicants\PersonModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -21,8 +21,11 @@ namespace Pokemon
             pokemon2.VerhoogLevel();
             pokemon2.ShowInfo();
 
-            //   pokemon1 = null;
-            int battle = Pokemon.Battle(pokemon1, pokemon2);
+            LogBattle(pokemon1, pokemon2, Pokemon.Battle(pokemon1, pokemon2));
+        }
+        
+        private static void LogBattle(Pokemon pokemon1, Pokemon pokemon2, int battle)
+        {
             switch (battle)
             {
                 case 0:
