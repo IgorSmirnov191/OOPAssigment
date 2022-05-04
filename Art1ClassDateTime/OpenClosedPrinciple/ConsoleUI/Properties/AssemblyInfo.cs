@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Meetlaat")]
+[assembly: AssemblyTitle("ConsoleUI")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("Meetlaat")]
+[assembly: AssemblyProduct("ConsoleUI")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("493336a5-9380-431b-b65d-12c196fdf05c")]
+[assembly: Guid("ba8f544f-6007-432c-8deb-fead092213d4")]
 
 // Version information for an assembly consists of the following four values:
 //

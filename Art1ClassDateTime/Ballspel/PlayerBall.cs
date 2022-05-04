@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ballspel
 {
-    class PlayerBall : Ball
+    internal class PlayerBall : Ball
     {
         public PlayerBall(int xin, int yin, int vxin, int vyin) : base(xin, yin, vxin, vyin)
         {
@@ -21,15 +17,19 @@ namespace Ballspel
                 case ConsoleKey.UpArrow:
                     vy--;
                     break;
+
                 case ConsoleKey.DownArrow:
                     vy++;
                     break;
+
                 case ConsoleKey.LeftArrow:
                     vx--;
                     break;
+
                 case ConsoleKey.RightArrow:
                     vx++;
                     break;
+
                 default:
                     break;
             }

@@ -1,21 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BookmarkManager
 {
     internal class BookmarkCloud
     {
         private BookMark[] bookMarks;
-        public BookmarkCloud() 
+
+        public BookmarkCloud()
         {
             bookMarks = new BookMark[5];
         }
+
         public BookMark GetBookMark(int index)
         {
-            if (index < 0 || index >= bookMarks.Length )
+            if (index < 0 || index >= bookMarks.Length)
             {
                 Console.WriteLine("Error. Index is out of range");
             }
@@ -29,28 +27,29 @@ namespace BookmarkManager
             }
             return new BookMark("Empty Page", "about:blank");
         }
-        public void SetBookMark(BookMark bookmark, int index) {
+
+        public void SetBookMark(BookMark bookmark, int index)
+        {
             if (index < 0 || index >= bookMarks.Length)
             {
-                  Console.WriteLine("Error. Index is out of range");
+                Console.WriteLine("Error. Index is out of range");
             }
             else
             {
-                    bookMarks[index] = bookmark;
-                  
+                bookMarks[index] = bookmark;
             }
         }
-        public void ClearBookMark(int index) {
+
+        public void ClearBookMark(int index)
+        {
             if (index < 0 || index >= bookMarks.Length)
             {
-                 Console.WriteLine("Error. Index is out of range");
+                Console.WriteLine("Error. Index is out of range");
             }
             else
             {
                 bookMarks[index] = null;
-               
             }
         }
-
     }
 }

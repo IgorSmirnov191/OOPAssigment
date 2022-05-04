@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PizzaTime
+﻿namespace PizzaTime
 {
     public class Pizza
     {
@@ -12,66 +6,70 @@ namespace PizzaTime
         private int diameter;
         private double price;
         private string error;
-        public Pizza() 
+
+        public Pizza()
         {
             toppings = "Pepperoni"; // most popular topping
             diameter = 36; // most popular 14 inches pizza in cm
-            price = 0; // most popular pizza is free 
+            price = 0; // most popular pizza is free
             error = "";
         }
+
         public string Error
-        { 
-            get 
-            { return error; } 
+        {
+            get
+            { return error; }
         }
 
         public string Toppings
         {
             get
-            { 
-                return toppings; 
+            {
+                return toppings;
             }
-            set 
+            set
             {
                 if (value != "")
                 {
                     toppings = value;
                     error = "";
                 }
-                else 
+                else
                 {
                     error += "Input fout. Geef een of meer toppings in. ";
                 }
             }
-
         }
-        public int Diameter {
-            get 
+
+        public int Diameter
+        {
+            get
             {
-                return diameter; 
+                return diameter;
             }
-            set 
-            { 
-                if (value> 0)
+            set
+            {
+                if (value > 0)
                 {
                     diameter = value;
                     error = "";
                 }
-                else 
+                else
                 {
-                    error +="Input fout. Geef een diameter in. ";
+                    error += "Input fout. Geef een diameter in. ";
                 }
             }
-
         }
-        public double Price {
-            get 
-            { 
-                return price; 
-            }   
-            set 
-            { 
-                 if (value >= 0)
+
+        public double Price
+        {
+            get
+            {
+                return price;
+            }
+            set
+            {
+                if (value >= 0)
                 {
                     price = value;
                     error = "";
@@ -81,14 +79,13 @@ namespace PizzaTime
                     error += "Input fout. Geef een prijs in. ";
                 }
             }
-
         }
+
         public override string ToString()
         {
             if (error == "")
                 return $"Pizza {Toppings}, diameter {Diameter}cm, prijs {Price}euro is besteld. ";
             else return error;
         }
-
     }
 }
