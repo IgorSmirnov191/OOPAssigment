@@ -48,7 +48,6 @@
   <ItemGroup>
     <Compile Include="Accounts.cs" />
     <Compile Include="EmployeeModel.cs" />
-    <Compile Include="Enums.cs" />
     <Compile Include="PersonModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -30,8 +30,8 @@ namespace ConsoleUI
 
             List<PersonModel> applicants = new List<PersonModel> {
                 new PersonModel{FirstName = "Tim", LastName = "Corey"},
-                 new PersonModel{FirstName = "Sue", LastName = "Storm", TypeOfEmployee = EmployeeType.Manager},
-                  new PersonModel{FirstName = "Nancy", LastName = "Roman",TypeOfEmployee = EmployeeType.Executive}
+                 new PersonModel{FirstName = "Sue", LastName = "Storm"},
+                  new PersonModel{FirstName = "Nancy", LastName = "Roman"}
             };
 
             List<EmployeeModel> employees = new List<EmployeeModel>();
