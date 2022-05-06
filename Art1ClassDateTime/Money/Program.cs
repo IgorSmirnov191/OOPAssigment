@@ -10,8 +10,10 @@ namespace Money
     {
         static void Main(string[] args)
         {
+
             double basicCapital = 1500.67;
-            IRekening rekening = RekeningCapture.Capture(RekeningCapture.GetRekening("ProRekening"));
+            
+            IRekening rekening = RekeningCapture.Capture(RekeningCapture.GetRekening("ProRekening",basicCapital));
 
             bool isAccountValid = RekeningValidator.Validate(rekening);
 
@@ -23,8 +25,7 @@ namespace Money
             try
             {
                 TransactionGenerator.TransactionStart(rekening);
-                TransactionGenerator.TransactionVoegGeldToe(rekening, basicCapital);
-                double intrest = TransactionGenerator.TransactionBerekerenRente(rekening);
+                var intrest = TransactionGenerator.TransactionBerekerenRente(rekening);
                 TransactionGenerator.TransactionVoegGeldToe(rekening, intrest);
                 TransactionGenerator.TransactionEnd(rekening);
             }

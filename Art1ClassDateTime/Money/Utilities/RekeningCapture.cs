@@ -8,13 +8,11 @@ namespace Money
 {
     public class RekeningCapture
     {
-        public static IRekening GetRekening(string rekeningType)
+        public static IRekening GetRekening(string rekeningType, double basicCapital = 0)
         {
             try
             {
-
-                return (IRekening)Activator.CreateInstance(Type.GetType($"Money.{rekeningType}"));
-
+                return (IRekening)Activator.CreateInstance(Type.GetType($"Money.{rekeningType}"), new Object[] {basicCapital});
             }
             catch (Exception e)
             {
@@ -27,10 +25,10 @@ namespace Money
             if (account != null)
             {
                 //Ask for account information
-                Console.WriteLine("Geef een rekeningnaam: ");
+                StandardMessages.DisplayInputMessageAccountName();
                 account.Name = Console.ReadLine();
 
-                Console.WriteLine("Geef een rekeningnummer: ");
+                StandardMessages.DisplayInputMessageAccountNumber();
                 account.Number = Console.ReadLine();
 
             }            

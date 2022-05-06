@@ -49,11 +49,11 @@
     <Compile Include="Accounts\Rekening.cs" />
     <Compile Include="Accounts\TransactionGenerator.cs" />
     <Compile Include="Accounts\SpaarRekening.cs" />
-    <Compile Include="RekeningCapture.cs" />
+    <Compile Include="Utilities\RekeningCapture.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RekeningValidator.cs" />
-    <Compile Include="StandardMessages.cs" />
+    <Compile Include="Utilities\RekeningValidator.cs" />
+    <Compile Include="Logging\StandardMessages.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -16,6 +16,10 @@ namespace Money
 
         }
         public Rekening() {}
+        public Rekening(double basicCapital)
+        {
+            VoegGeldToe(basicCapital);
+        }
         public abstract double BerekenRente();
 
 
