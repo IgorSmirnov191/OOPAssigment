@@ -52,13 +52,13 @@ namespace Money
 
             Console.WriteLine("Account is locked.");
         }
-        public static void TransactionFout()
+        public static void OperationFoutEnterToClose(string option)
         {
-            Console.Write("Not validated. Press enter to close...");
+            Console.Write($"{option} Press enter to close...");
             Console.ReadLine();
         }
         
-        public static void EndApplication()
+        public static void EndApplicationEnterKeyToClose()
         {
             Console.Write("Press enter to close...");
             Console.ReadLine();

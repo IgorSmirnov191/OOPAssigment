@@ -19,22 +19,21 @@ namespace Money
 
             if (isAccountValid == false)
             {
-                StandardMessages.TransactionFout();
+                StandardMessages.OperationFoutEnterToClose("Not validated.");
                 return;
             }
             try
             {
                 TransactionGenerator.TransactionStart(rekening);
-                var intrest = TransactionGenerator.TransactionBerekerenRente(rekening);
-                TransactionGenerator.TransactionVoegGeldToe(rekening, intrest);
+                TransactionGenerator.TransactionVoegGeldToe(rekening, TransactionGenerator.TransactionBerekerenRente(rekening));
                 TransactionGenerator.TransactionEnd(rekening);
             }
             catch (Exception ex)
             {
-                StandardMessages.TransactionFout();
+                StandardMessages.OperationFoutEnterToClose($"Transaction is aborted. {ex.Message}");
             }
 
-            StandardMessages.EndApplication();
+            StandardMessages.EndApplicationEnterKeyToClose();
 
         }
     }

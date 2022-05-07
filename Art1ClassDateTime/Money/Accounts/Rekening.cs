@@ -25,15 +25,26 @@ namespace Money
 
         public double HaalGeldAf(double sum)
         {
-            if (IsLocked) return 0;
-            else return (saldo -= (Saldo < sum) ? Saldo : sum);
-
+            if (IsLocked)
+            {
+                return 0;
+            }
+            else
+            {
+                return (saldo -= (Saldo < sum) ? Saldo : sum);
+            }
         }
 
         public double VoegGeldToe(double sum)
         {
-            if (IsLocked) return 0;
-            else return saldo += sum;
+            if (IsLocked)
+            {
+                return 0;
+            }
+            else
+            {
+                return saldo += sum;
+            }
         }
 
         public bool IsLocked { get; set; } = false;
