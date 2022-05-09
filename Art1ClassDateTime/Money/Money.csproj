@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Accounts\BankRekening.cs" />
     <Compile Include="Accounts\IRekening.cs" />
+    <Compile Include="Accounts\NullRekening.cs" />
     <Compile Include="Accounts\ProRekening.cs" />
     <Compile Include="Accounts\Rekening.cs" />
     <Compile Include="Accounts\TransactionGenerator.cs" />

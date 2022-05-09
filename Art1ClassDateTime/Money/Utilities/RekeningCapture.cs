@@ -16,22 +16,19 @@ namespace Money
             }
             catch (Exception e)
             {
-                return null;
+                return new NullRekening();
             }
           
         }
         public static IRekening Capture(IRekening account)
         {
-            if (account != null)
-            {
-                //Ask for account information
-                StandardMessages.DisplayInputMessageAccountName();
-                account.Name = Console.ReadLine();
+            //Ask for account information
+            StandardMessages.DisplayInputMessageAccountName();
+            account.Name = Console.ReadLine();
 
-                StandardMessages.DisplayInputMessageAccountNumber();
-                account.Number = Console.ReadLine();
-
-            }            
+            StandardMessages.DisplayInputMessageAccountNumber();
+            account.Number = Console.ReadLine();
+       
             return account;
         }
     }
