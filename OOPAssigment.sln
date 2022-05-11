@@ -58,6 +58,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Money", "Art1ClassDateTime\Money\Money.csproj", "{086DC350-0FBB-44B0-B070-994C1100D2EF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LiskovSubstitutionPrincipleOOP", "LiskovSubstitutionPrincipleOOP", "{BE3E4314-4021-43C6-A36C-EC8CA9F42FB9}"
+	ProjectSection(SolutionItems) = preProject
+		Art1ClassDateTime\LiskovSubstitutionPrinciple\Uml2Company.drawio.png = Art1ClassDateTime\LiskovSubstitutionPrinciple\Uml2Company.drawio.png
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleUI", "Art1ClassDateTime\LiskovSubstitutionPrinciple\ConsoleUI\ConsoleUI.csproj", "{1D6ADA7F-7154-4CDA-9791-F3B79DC121BF}"
 EndProject
