@@ -16,7 +16,7 @@ namespace ConsoleUI
             accountingVP.LastName = "Stone";
             accountingVP.CalculatePerHourRate(4);
 
-            Employee emp = new Employee();
+            Employee emp = new Manager();
             emp.FirstName = "Tim";
             emp.LastName = "Corey";
             emp.AssingManager(accountingVP);
