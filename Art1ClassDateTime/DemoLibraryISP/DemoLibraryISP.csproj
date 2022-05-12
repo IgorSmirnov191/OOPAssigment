@@ -46,12 +46,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AudioBook.cs" />
-    <Compile Include="Book.cs" />
-    <Compile Include="DVD.cs" />
-    <Compile Include="ILibraryItem.cs" />
+    <Compile Include="AudioBook\AudioBook.cs" />
+    <Compile Include="Book\Book.cs" />
+    <Compile Include="DigitalMovie\DigitalMovie.cs" />
+    <Compile Include="DVD\DVD.cs" />
+    <Compile Include="AudioBook\Interfaces\IAudioBook.cs" />
+    <Compile Include="Book\Interfaces\IBook.cs" />
+    <Compile Include="DVD\Interfaces\IBorrawableDVD.cs" />
+    <Compile Include="GeneralInterface\IBorrowable.cs" />
+    <Compile Include="AudioBook\Interfaces\IBorrowableAudioBook.cs" />
+    <Compile Include="Book\Interfaces\IBorrowableBook.cs" />
+    <Compile Include="DVD\Interfaces\IDVD.cs" />
+    <Compile Include="GeneralInterface\ILibraryItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReferenceBook.cs" />
+    <Compile Include="Book\ReferenceBook.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

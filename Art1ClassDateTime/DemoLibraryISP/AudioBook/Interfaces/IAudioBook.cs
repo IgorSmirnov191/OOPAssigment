@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleUIISP
+namespace DemoLibraryISP
 {
-    public class Program
+    public interface IAudioBook : ILibraryItem
     {
-        static void Main(string[] args)
-        {
-
-        }
+        int RuntimeInMinutes { get; set; }
     }
 }

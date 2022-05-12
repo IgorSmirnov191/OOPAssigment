@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleUIISP
+namespace DemoLibraryISP
 {
-    public class Program
+    public interface IBorrawableDVD : IDVD, IBorrowable
     {
-        static void Main(string[] args)
-        {
-
-        }
     }
 }

@@ -1,18 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace DemoLibraryISP
 {
-    public interface ILibraryItem
-    {  
-        string LibraryId { get; set; }
-        string Title { get; set; }
-        string Author { get; set; }
+    public interface IBorrowable 
+    {
         string Borrower { get; set; }
         DateTime BorrowerDate { get; set; }
         int CheckOutDurationInDays { get; set; }
-      
-        int Pages { get; set; }
-       
 
         void CheckIn();
         void CheckOut(string borrower);

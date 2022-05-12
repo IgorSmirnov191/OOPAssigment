@@ -4,13 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleUIISP
+namespace DemoLibraryISP
 {
-    public class Program
+    public interface IBook : ILibraryItem
     {
-        static void Main(string[] args)
-        {
-
-        }
+        string Author { get; set; }
+        int Pages { get; set; }
     }
 }
