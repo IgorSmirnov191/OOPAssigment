@@ -42,81 +42,13 @@ namespace GooseGame
                 {
                     spaceForward = 53;
                 }
+            }
 
-            }
-            
-            ISpace space = MakeTurn(spiece, spaceForward);
-            if (space.Action == Rules.None)
+            if (StartAction(spiece, MakeTurn(spiece, spaceForward), spaceForward))
             {
-                spiece.LocateTo(space);
-
-            }
-            else if (space.Action == Rules.GoToStart)
-            {
-                spiece.LocateTo(Board.Spaces[1]);
-                Console.WriteLine($"{spiece.PiecePlayer.Name} Go to start!");
-
-            }
-            else if (space.Action == Rules.FlyWithGoos)
-            {
-               
-                spiece.LocateTo(space);
-                Console.WriteLine($"{spiece.PiecePlayer.Name} Fly with goos!");
-                space = MakeTurn(spiece, spaceForward);
-                if (space.Action == Rules.WinnerStopGame)
-                {
-                    Console.WriteLine($"Game Over {spiece.PiecePlayer.Name} won!");
-                    return true;
-                }
-                spiece.LocateTo(space);
-               
-
-            }
-            else if (space.Action == Rules.GoTo12)
-            {
-                spiece.LocateTo(Board.Spaces[12]);
-                Console.WriteLine($"{spiece.PiecePlayer.Name} goes to 12!");
-            }
-            else if (space.Action == Rules.GoTo39)
-            {
-                spiece.LocateTo(Board.Spaces[39]);
-                Console.WriteLine($" {spiece.PiecePlayer.Name} goes to 39!");
-            }
-            else if (space.Action == Rules.SkipOneTurn)
-            {
-                spiece.LocateTo(space);
-                spiece.LeftRollsToMiss = 2;
-                Console.WriteLine($"{spiece.PiecePlayer.Name} skip one turn!");
-            }
-            
-            else if (space.Action == Rules.SkipThreeTurns)
-            {
-                spiece.LocateTo(space);
-                spiece.LeftRollsToMiss = 4;
-                Console.WriteLine($"{spiece.PiecePlayer.Name} skip three turns!");
-            }
-            else if (space.Action == Rules.WaitUntilAnotherArrives)
-            {
-                spiece.LocateTo(space);
-                Console.WriteLine($"{spiece.PiecePlayer.Name} skip turn until another player arrives! ");
-                spiece.TurnOffUntilAnother = true;
-                foreach (var spie in Board.Pieces)
-                {
-                    if (spie.PieceCurrentSpace.Action == Rules.WaitUntilAnotherArrives
-                         && spiece.PiecePlayer.Name != spie.PiecePlayer.Name)
-                    {
-                        spie.TurnOffUntilAnother = false;
-                        Console.WriteLine($"{spie.PiecePlayer.Name} can continue playing");
-                    }
-
-                }
-
-            }
-            else if (space.Action == Rules.WinnerStopGame)
-            {
-                Console.WriteLine($"Game Over {spiece.PiecePlayer.Name} won!");
                 return true;
             }
+
             if(TurnContainer.Count == 0)
             {
                 TurnCount++;
@@ -129,6 +61,91 @@ namespace GooseGame
                 PrepareTurnContainer();
             }
             return false; 
+        }
+
+        private bool StartAction(Piece spiece, ISpace space, int spaceForward)
+        {
+            bool won = false;
+            switch (space.Action)
+            {
+                case Rules.None:
+                {
+                        spiece.LocateTo(space); 
+                        break;
+                }
+                case Rules.GoToStart:
+                {
+                        spiece.LocateTo(Board.Spaces[1]);
+                        Console.WriteLine($"{spiece.PiecePlayer.Name} Go to start!");
+                        break;
+                }
+                case Rules.FlyWithGoos:
+                {
+                        spiece.LocateTo(space);
+                        Console.WriteLine($"{spiece.PiecePlayer.Name} Fly with goos!");
+                        space = MakeTurn(spiece, spaceForward);
+                        if (space.Action == Rules.WinnerStopGame)
+                        {
+                            Console.WriteLine($"Game Over {spiece.PiecePlayer.Name} won!");
+                            won = true;
+                            break;
+                        }
+                        spiece.LocateTo(space);
+
+                        break;
+                }
+                case Rules.GoTo12:
+                {
+                        spiece.LocateTo(Board.Spaces[12]);
+                        Console.WriteLine($"{spiece.PiecePlayer.Name} goes to 12!");
+                        break;
+                }
+                case Rules.GoTo39:
+                {
+                        spiece.LocateTo(Board.Spaces[39]);
+                        Console.WriteLine($"{spiece.PiecePlayer.Name} goes to 39!");
+                        break;
+                }
+                case Rules.SkipOneTurn:
+                {
+                        spiece.LocateTo(space);
+                        spiece.LeftRollsToMiss = 2;
+                        Console.WriteLine($"{spiece.PiecePlayer.Name} skip one turn!");
+                        break;
+                }
+                case Rules.SkipThreeTurns:
+                {
+                        spiece.LocateTo(space);
+                        spiece.LeftRollsToMiss = 4;
+                        Console.WriteLine($"{spiece.PiecePlayer.Name} skip three turns!");
+                        break;
+                }
+                case Rules.WaitUntilAnotherArrives:
+                {
+                        spiece.LocateTo(space);
+                        Console.WriteLine($"{spiece.PiecePlayer.Name} skip turn until another player arrives! ");
+                        spiece.TurnOffUntilAnother = true;
+                        foreach (var spie in Board.Pieces)
+                        {
+                            if (spie.PieceCurrentSpace.Action == Rules.WaitUntilAnotherArrives
+                                 && spiece.PiecePlayer.Name != spie.PiecePlayer.Name)
+                            {
+                                spie.TurnOffUntilAnother = false;
+                                Console.WriteLine($"{spie.PiecePlayer.Name} can continue playing");
+                            }
+
+                        }
+                        break;
+                }
+                case Rules.WinnerStopGame:
+                {
+                        Console.WriteLine($"Game Over {spiece.PiecePlayer.Name} won!");
+                        won = true;
+                        break;
+                }
+            }
+            return won;
+
         }
         private ISpace MakeTurn(Piece current, int spaceForward)
         {
