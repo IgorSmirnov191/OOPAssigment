@@ -11,13 +11,19 @@ namespace GooseGame
         }
         public Board Board { get; set; }
         public int TurnCount { get; private set; } = 0;
-
+        private int SpaceForward { get; set; }= 0;
         private Queue<Piece> TurnContainer { get; set; }
 
-        public void Start() 
+        public bool Start() 
         {
            TurnContainer = new Queue<Piece>();
-           PrepareTurnContainer();
+           if(!PrepareTurnContainer())
+            {
+                Console.WriteLine("There are no players in the game");
+                return false;
+            }
+           Console.WriteLine("Turn 0");
+            return true;
         }
         public void Stop()
         {
@@ -26,30 +32,34 @@ namespace GooseGame
         }
         public bool Roll() 
         {
+            bool stopgame = false;
+            Piece currentspiece = null;
             DiceRoller dice = this.Board.DiceRoller;
             dice?.Roll();
-            int spaceForward = dice.DicesScore;
-
-            Piece spiece = TurnContainer.Dequeue();
-
-            if (TurnCount == 0 && spiece.PieceCurrentSpace.Index == 1)
+            SpaceForward = dice.DicesScore;
+            if (TurnContainer.Count != 0)
             {
-                if (dice.Scoores[0] == 5 && dice.Scoores[1] == 4)
-                {
-                    spaceForward = 26;
-                }
-                else if (dice.Scoores[0] == 6 && dice.Scoores[1] == 3)
-                {
-                    spaceForward = 53;
-                }
-            }
+                currentspiece = TurnContainer.Dequeue();
 
-            if (StartAction(spiece, MakeTurn(spiece, spaceForward), spaceForward))
-            {
-                return true;
-            }
+                if (TurnCount == 0 && currentspiece.PieceCurrentSpace.Index == 1)
+                {
+                    if ((dice.Scoores[0] == 5 && dice.Scoores[1] == 4) ||
+                            (dice.Scoores[1] == 5 && dice.Scoores[0] == 4))
+                    {
+                        SpaceForward = 26;
+                    }
+                    else if ((dice.Scoores[0] == 6 && dice.Scoores[1] == 3) ||
+                            (dice.Scoores[1] == 6 && dice.Scoores[0] == 3))
+                    {
+                        SpaceForward = 53;
+                    }
+                }
 
-            if(TurnContainer.Count == 0)
+                stopgame = StartAction(currentspiece, MakeTurn(currentspiece));
+
+            }
+            else
+            
             {
                 TurnCount++;
                 Console.WriteLine($"Turn {TurnCount}");
@@ -60,10 +70,10 @@ namespace GooseGame
                 }
                 PrepareTurnContainer();
             }
-            return false; 
+            return stopgame; 
         }
 
-        private bool StartAction(Piece spiece, ISpace space, int spaceForward)
+        private bool StartAction(Piece spiece, ISpace space)
         {
             bool won = false;
             switch (space.Action)
@@ -83,15 +93,7 @@ namespace GooseGame
                 {
                         spiece.LocateTo(space);
                         Console.WriteLine($"{spiece.PiecePlayer.Name} Fly with goos!");
-                        space = MakeTurn(spiece, spaceForward);
-                        if (space.Action == Rules.WinnerStopGame)
-                        {
-                            Console.WriteLine($"Game Over {spiece.PiecePlayer.Name} won!");
-                            won = true;
-                            break;
-                        }
-                        spiece.LocateTo(space);
-
+                        won = StartAction(spiece, MakeTurn(spiece));
                         break;
                 }
                 case Rules.GoTo12:
@@ -147,29 +149,32 @@ namespace GooseGame
             return won;
 
         }
-        private ISpace MakeTurn(Piece current, int spaceForward)
+        private ISpace MakeTurn(Piece current)
         {
-            int eyes = spaceForward;
-            int forwardIndex = current.PieceCurrentSpace.Index + spaceForward;
+           
+            int forwardIndex = current.PieceCurrentSpace.Index + SpaceForward;
             int maxIndex = this.Board.MaxIndex;
             if(forwardIndex >= maxIndex)
             { 
                 forwardIndex = maxIndex - (forwardIndex - maxIndex); 
             }
             ISpace space = this.Board.Spaces[forwardIndex];
-            Console.WriteLine($"Piece {current.PiecePlayer.Name} {current.PieceCurrentSpace.Index} with {eyes} eyes ({this.Board.DiceRoller.Scoores[0].ToString()}+{this.Board.DiceRoller.Scoores[1].ToString()}) relocate to {space.Name} {space.Index} with {space.Action}");
+            Console.WriteLine($"Piece {current.PiecePlayer.Name} {current.PieceCurrentSpace.Index} with {SpaceForward} eyes ({this.Board.DiceRoller.Scoores[0].ToString()}+{this.Board.DiceRoller.Scoores[1].ToString()}) relocate to {space.Name} {space.Index} with {space.Action}");
            
             return space;
         }
-        private void PrepareTurnContainer() 
+        private bool PrepareTurnContainer() 
         {
+            bool success = false;
             foreach (var piece in Board.Pieces)
             {
                 if (piece.LeftRollsToMiss == 0 && !piece.TurnOffUntilAnother)
                 {
                     TurnContainer.Enqueue(piece);
+                    success = true;
                 }
             }
+            return success;
         }
 
 

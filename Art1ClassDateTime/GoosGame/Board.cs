@@ -24,9 +24,9 @@ namespace GooseGame
 
         public string Layout { get; set; }
 
-        public void Start()
+        public bool Start()
         {
-            Sequenser.Start();
+            return Sequenser.Start();
         }
 
         public void Commit() { }
