@@ -75,14 +75,14 @@ namespace GooseGame
             return stopgame; 
         }
 
-        private bool StartAction(Piece spiece, ISpace space)
+        private bool StartAction(Piece spiece, ISpace toSpace)
         {
             bool won = false;
-            switch (space.Action)
+            switch (toSpace.Action)
             {
                 case Rules.None:
                 {
-                        spiece.LocateTo(space); 
+                        spiece.LocateTo(toSpace); 
                         break;
                 }
                 case Rules.GoToStart:
@@ -93,7 +93,7 @@ namespace GooseGame
                 }
                 case Rules.FlyWithGoos:
                 {
-                        spiece.LocateTo(space);
+                        spiece.LocateTo(toSpace);
                         _logger.Log($"{spiece.PiecePlayer.Name} Fly with goos!");
                         won = StartAction(spiece, MakeTurn(spiece));
                         break;
@@ -112,21 +112,21 @@ namespace GooseGame
                 }
                 case Rules.SkipOneTurn:
                 {
-                        spiece.LocateTo(space);
+                        spiece.LocateTo(toSpace);
                         spiece.LeftRollsToMiss = 2;
                         _logger.Log($"{spiece.PiecePlayer.Name} skip one turn!");
                         break;
                 }
                 case Rules.SkipThreeTurns:
                 {
-                        spiece.LocateTo(space);
+                        spiece.LocateTo(toSpace);
                         spiece.LeftRollsToMiss = 4;
                         _logger.Log($"{spiece.PiecePlayer.Name} skip three turns!");
                         break;
                 }
                 case Rules.WaitUntilAnotherArrives:
                 {
-                        spiece.LocateTo(space);
+                        spiece.LocateTo(toSpace);
                         _logger.Log($"{spiece.PiecePlayer.Name} skip turn until another player arrives! ");
                         spiece.TurnOffUntilAnother = true;
                         foreach (var spie in Board.Pieces)
