@@ -8,6 +8,7 @@ namespace GooseGame
 {
     public class Board
     {
+        public const int DoubleDicer = 2;
         public Board(SpacePack pak)
         {
             Spaces = pak.Spaces;
@@ -19,8 +20,9 @@ namespace GooseGame
         public List<Piece> Pieces { get; set; } = new List<Piece>();
         public List<ISpace> Spaces { get; set; }
         public Sequenser Sequenser { get; set; }
+        public ConsoleLogger Logger { get; set; } = new ConsoleLogger();
 
-        public DiceRoller DiceRoller { get; set; } = new DiceRoller(2);
+        public DiceRoller DiceRoller { get; set; } = new DiceRoller(DoubleDicer);
 
         public string Layout { get; set; }
 
@@ -31,7 +33,10 @@ namespace GooseGame
 
         public void Commit() { }
 
-        public bool Roll() { return Sequenser.Roll(); }
+        public bool Roll() 
+        { 
+            return Sequenser.Roll(); 
+        }
 
        
     }

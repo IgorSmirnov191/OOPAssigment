@@ -5,9 +5,11 @@ namespace GooseGame
 {
     public class Sequenser
     {
+        private readonly ConsoleLogger _logger;
         public Sequenser(Board board)
-        { 
+        {
             Board = board;
+            _logger = this.Board.Logger;   
         }
         public Board Board { get; set; }
         public int TurnCount { get; private set; } = 0;
@@ -19,10 +21,10 @@ namespace GooseGame
            TurnContainer = new Queue<Piece>();
            if(!PrepareTurnContainer())
             {
-                Console.WriteLine("There are no players in the game");
+                _logger.Log("There are no players in the game");
                 return false;
             }
-           Console.WriteLine("Turn 0");
+            _logger.Log("Turn 0");
             return true;
         }
         public void Stop()
@@ -62,7 +64,7 @@ namespace GooseGame
             
             {
                 TurnCount++;
-                Console.WriteLine($"Turn {TurnCount}");
+                _logger.Log($"Turn {TurnCount}");
                 
                 foreach(var piece in Board.Pieces)
                 {
@@ -86,46 +88,46 @@ namespace GooseGame
                 case Rules.GoToStart:
                 {
                         spiece.LocateTo(Board.Spaces[1]);
-                        Console.WriteLine($"{spiece.PiecePlayer.Name} Go to start!");
+                        _logger.Log($"{spiece.PiecePlayer.Name} Go to start!");
                         break;
                 }
                 case Rules.FlyWithGoos:
                 {
                         spiece.LocateTo(space);
-                        Console.WriteLine($"{spiece.PiecePlayer.Name} Fly with goos!");
+                        _logger.Log($"{spiece.PiecePlayer.Name} Fly with goos!");
                         won = StartAction(spiece, MakeTurn(spiece));
                         break;
                 }
                 case Rules.GoTo12:
                 {
                         spiece.LocateTo(Board.Spaces[12]);
-                        Console.WriteLine($"{spiece.PiecePlayer.Name} goes to 12!");
+                        _logger.Log($"{spiece.PiecePlayer.Name} goes to 12!");
                         break;
                 }
                 case Rules.GoTo39:
                 {
                         spiece.LocateTo(Board.Spaces[39]);
-                        Console.WriteLine($"{spiece.PiecePlayer.Name} goes to 39!");
+                        _logger.Log($"{spiece.PiecePlayer.Name} goes to 39!");
                         break;
                 }
                 case Rules.SkipOneTurn:
                 {
                         spiece.LocateTo(space);
                         spiece.LeftRollsToMiss = 2;
-                        Console.WriteLine($"{spiece.PiecePlayer.Name} skip one turn!");
+                        _logger.Log($"{spiece.PiecePlayer.Name} skip one turn!");
                         break;
                 }
                 case Rules.SkipThreeTurns:
                 {
                         spiece.LocateTo(space);
                         spiece.LeftRollsToMiss = 4;
-                        Console.WriteLine($"{spiece.PiecePlayer.Name} skip three turns!");
+                        _logger.Log($"{spiece.PiecePlayer.Name} skip three turns!");
                         break;
                 }
                 case Rules.WaitUntilAnotherArrives:
                 {
                         spiece.LocateTo(space);
-                        Console.WriteLine($"{spiece.PiecePlayer.Name} skip turn until another player arrives! ");
+                        _logger.Log($"{spiece.PiecePlayer.Name} skip turn until another player arrives! ");
                         spiece.TurnOffUntilAnother = true;
                         foreach (var spie in Board.Pieces)
                         {
@@ -133,7 +135,7 @@ namespace GooseGame
                                  && spiece.PiecePlayer.Name != spie.PiecePlayer.Name)
                             {
                                 spie.TurnOffUntilAnother = false;
-                                Console.WriteLine($"{spie.PiecePlayer.Name} can continue playing");
+                                _logger.Log($"{spie.PiecePlayer.Name} can continue playing");
                             }
 
                         }
@@ -141,7 +143,7 @@ namespace GooseGame
                 }
                 case Rules.WinnerStopGame:
                 {
-                        Console.WriteLine($"Game Over {spiece.PiecePlayer.Name} won!");
+                        _logger.Log($"Game Over {spiece.PiecePlayer.Name} won!");
                         won = true;
                         break;
                 }
@@ -159,7 +161,7 @@ namespace GooseGame
                 forwardIndex = maxIndex - (forwardIndex - maxIndex); 
             }
             ISpace space = this.Board.Spaces[forwardIndex];
-            Console.WriteLine($"Piece {current.PiecePlayer.Name} {current.PieceCurrentSpace.Index} with {SpaceForward} eyes ({this.Board.DiceRoller.Scoores[0].ToString()}+{this.Board.DiceRoller.Scoores[1].ToString()}) relocate to {space.Name} {space.Index} with {space.Action}");
+            _logger.Log($"Piece {current.PiecePlayer.Name} {current.PieceCurrentSpace.Index} with {SpaceForward} eyes ({this.Board.DiceRoller.Scoores[0].ToString()}+{this.Board.DiceRoller.Scoores[1].ToString()}) relocate to {space.Name} {space.Index} with {space.Action}");
            
             return space;
         }
