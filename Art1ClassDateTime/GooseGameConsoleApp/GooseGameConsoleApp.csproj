@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6937BE16-AC1E-4515-A383-9E045BEA6416}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>GooseGame</RootNamespace>
-    <AssemblyName>GooseGame</AssemblyName>
+    <ProjectGuid>{9CF65789-0794-4BB2-9C4A-C2BD09CC7CBC}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>GooseGameConsoleApp</RootNamespace>
+    <AssemblyName>GooseGameConsoleApp</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,10 +32,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup />
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -47,36 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Factory\Board.cs" />
-    <Compile Include="Models\BridgeSpace.cs" />
-    <Compile Include="Models\DeathSpace.cs" />
-    <Compile Include="Models\DiceRoller.cs" />
-    <Compile Include="Models\EndSpace.cs" />
-    <Compile Include="Factory\Game.cs" />
-    <Compile Include="Models\GooseSpace.cs" />
-    <Compile Include="Factory\IDice.cs" />
-    <Compile Include="Models\InnSpace.cs" />
-    <Compile Include="Factory\IPiece.cs" />
-    <Compile Include="Factory\IPlayer.cs" />
-    <Compile Include="Models\ISpace.cs" />
-    <Compile Include="Logging\ConsoleLogger.cs" />
-    <Compile Include="Models\MazeSpace.cs" />
-    <Compile Include="Factory\Piece.cs" />
-    <Compile Include="Factory\Player.cs" />
-    <Compile Include="Models\PrisonSpace.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="BusinessLayer\Rules.cs" />
-    <Compile Include="BusinessLayer\Sequenser.cs" />
-    <Compile Include="PresentationLayer\Shape.cs" />
-    <Compile Include="Models\SpacePack.cs" />
-    <Compile Include="Models\SpaceTypes.cs" />
-    <Compile Include="Models\StartSpace.cs" />
-    <Compile Include="Models\StaticSpace.cs" />
-    <Compile Include="Models\WellSpace.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\GoosGame\GooseGame.csproj">
+      <Project>{6937be16-ac1e-4515-a383-9e045bea6416}</Project>
+      <Name>GooseGame</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

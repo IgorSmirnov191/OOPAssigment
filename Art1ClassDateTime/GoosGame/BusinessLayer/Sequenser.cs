@@ -13,7 +13,7 @@ namespace GooseGame
         }
         public Board Board { get; set; }
         public int TurnCount { get; private set; } = 0;
-        private int SpaceForward { get; set; }= 0;
+        public int SpaceForward { get; set; }= 0;
         private Queue<Piece> TurnContainer { get; set; }
 
         public bool Start() 
@@ -151,7 +151,7 @@ namespace GooseGame
             return won;
 
         }
-        private ISpace MakeTurn(Piece current)
+        public ISpace MakeTurn(Piece current)
         {
            
             int forwardIndex = current.PieceCurrentSpace.Index + SpaceForward;
