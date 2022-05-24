@@ -35,7 +35,7 @@ namespace GooseGame.Tests
         public void MakeTurn_NextSpaceToMaxIdexAndBackShouldCalculate()
         {
             // Arrange
-            ISpace expected = new StaticSpace(57, null);
+            ISpace expected = new StaticSpace(49, null);
 
             // Act
             int MaxIndex = 63;
@@ -51,6 +51,7 @@ namespace GooseGame.Tests
             if (actual.Type == SpaceTypes.GooseSpace)
             {
                 piece.PieceCurrentSpace.Index = actual.Index;
+                board.Sequenser.SpaceForward = board.Sequenser.BackForward ? (-1) * board.Sequenser.SpaceForward : board.Sequenser.SpaceForward;
                 actual = board.Sequenser.MakeTurn(piece);
             }
                 

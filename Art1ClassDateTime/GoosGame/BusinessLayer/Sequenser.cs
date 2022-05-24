@@ -14,6 +14,7 @@ namespace GooseGame
         public Board Board { get; set; }
         public int TurnCount { get; private set; } = 0;
         public int SpaceForward { get; set; }= 0;
+        public bool BackForward { get; set; } = false;
         private Queue<Piece> TurnContainer { get; set; }
 
         public bool Start() 
@@ -94,7 +95,9 @@ namespace GooseGame
                 case Rules.FlyWithGoos:
                 {
                         spiece.LocateTo(toSpace);
-                        _logger.Log($"{spiece.PiecePlayer.Name} Fly with goos!");
+                        string reverse = BackForward ? "reverse" : "";
+                        _logger.Log($"{spiece.PiecePlayer.Name} Fly with {reverse} goos!");
+                        SpaceForward = BackForward ? (-1) * SpaceForward : SpaceForward;
                         won = StartAction(spiece, MakeTurn(spiece));
                         break;
                 }
@@ -153,12 +156,13 @@ namespace GooseGame
         }
         public ISpace MakeTurn(Piece current)
         {
-           
+            BackForward = false;
             int forwardIndex = current.PieceCurrentSpace.Index + SpaceForward;
             int maxIndex = this.Board.MaxIndex;
             if(forwardIndex >= maxIndex)
             { 
-                forwardIndex = maxIndex - (forwardIndex - maxIndex); 
+                forwardIndex = maxIndex - (forwardIndex - maxIndex);
+                BackForward = true;
             }
             ISpace space = this.Board.Spaces[forwardIndex];
             _logger.Log($"Piece {current.PiecePlayer.Name} {current.PieceCurrentSpace.Index} with {SpaceForward} eyes ({this.Board.DiceRoller.Scoores[0].ToString()}+{this.Board.DiceRoller.Scoores[1].ToString()}) relocate to {space.Name} {space.Index} with {space.Action}");
