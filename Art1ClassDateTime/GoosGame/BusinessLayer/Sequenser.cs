@@ -76,7 +76,7 @@ namespace GooseGame
             return stopgame; 
         }
 
-        private bool StartAction(Piece spiece, ISpace toSpace)
+        public bool StartAction(Piece spiece, ISpace toSpace)
         {
             bool won = false;
             switch (toSpace.Action)
