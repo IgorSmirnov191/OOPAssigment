@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GooseGame
 {
@@ -20,22 +16,20 @@ namespace GooseGame
 
         public Piece(Player piecePlayer)
         {
-             PiecePlayer = piecePlayer;
-           
+            PiecePlayer = piecePlayer;
         }
+
         public ConsoleColor Colour { get; set; }
         public Shape PieceShape { get; set; }
         public Player PiecePlayer { get; set; }
         public int LeftRollsToMiss { get; set; } = 0;
 
         public bool TurnOffUntilAnother { get; set; } = false;
-        public ISpace PieceCurrentSpace { get; set; } = new StartSpace(1, null);
+        public ISpace PieceCurrentSpace { get; set; } = new StartSpace(1);
 
-        public void LocateTo(ISpace space) 
+        public void LocateTo(ISpace space)
         {
             PieceCurrentSpace = space;
         }
-
-
     }
 }

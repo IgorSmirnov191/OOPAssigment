@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
-using GooseGame;
+﻿using Xunit;
 
 namespace GooseGame.Tests
 {
@@ -14,7 +8,7 @@ namespace GooseGame.Tests
         public void MakeTurn_NextSpaceShouldCalculate()
         {
             // Arrange
-            ISpace expected = new StaticSpace(5, null);
+            ISpace expected = new StaticSpace(5);
 
             // Act
             Board board = new Board(new SpacePack(63));
@@ -28,14 +22,13 @@ namespace GooseGame.Tests
 
             // Assert
             Assert.Equal(expected.Index, actual.Index);
-
         }
 
         [Fact]
         public void MakeTurn_NextSpaceToMaxIdexAndBackShouldCalculate()
         {
             // Arrange
-            ISpace expected = new StaticSpace(49, null);
+            ISpace expected = new StaticSpace(49);
 
             // Act
             int MaxIndex = 63;
@@ -54,11 +47,11 @@ namespace GooseGame.Tests
                 board.Sequenser.SpaceForward = board.Sequenser.BackForward ? (-1) * board.Sequenser.SpaceForward : board.Sequenser.SpaceForward;
                 actual = board.Sequenser.MakeTurn(piece);
             }
-  
+
             // Assert
             Assert.Equal(expected.Index, actual.Index);
-
         }
+
         [Fact]
         public void StartAction_WonStopGameShouldCalculate()
         {
@@ -80,14 +73,13 @@ namespace GooseGame.Tests
 
             // Assert
             Assert.Equal(expected, actual);
-
         }
 
         [Fact]
         public void StartAction_BridgeShouldCalculate()
         {
             // Arrange
-            ISpace expected = new StaticSpace(12,null);
+            ISpace expected = new StaticSpace(12);
             // Act
             int MaxIndex = 63;
             Board board = new Board(new SpacePack(MaxIndex));
@@ -103,14 +95,13 @@ namespace GooseGame.Tests
             ISpace actual = piece.PieceCurrentSpace;
             // Assert
             Assert.Equal(expected.Index, actual.Index);
-
         }
 
         [Fact]
         public void StartAction_InnShouldCalculate()
         {
             // Arrange
-            ISpace expected = new InnSpace(null);
+            ISpace expected = new InnSpace(SpaceTypes.InnSpace);
             bool turnOffexpected = true;
 
             // Act
@@ -130,15 +121,14 @@ namespace GooseGame.Tests
             // Asserts
 
             Assert.Equal(expected.Index, actual.Index);
-            Assert.Equal(turnOffexpected, piece.LeftRollsToMiss>1);
-
+            Assert.Equal(turnOffexpected, piece.LeftRollsToMiss > 1);
         }
 
         [Fact]
         public void StartAction_WellShouldCalculate()
         {
             // Arrange
-            ISpace expected = new WellSpace(null);
+            ISpace expected = new WellSpace(SpaceTypes.WellSpace);
             bool turnOffUntilexpected = true;
 
             // Act
@@ -155,7 +145,7 @@ namespace GooseGame.Tests
             board.Sequenser.SpaceForward = 4;
             board.Sequenser.StartAction(piece1, board.Sequenser.MakeTurn(piece1));
             ISpace actual = piece1.PieceCurrentSpace;
-          
+
             // Asserts
             Assert.Equal(expected.Index, actual.Index);
             Assert.Equal(turnOffUntilexpected, piece1.TurnOffUntilAnother);
@@ -167,17 +157,16 @@ namespace GooseGame.Tests
             board.Sequenser.StartAction(piece2, board.Sequenser.MakeTurn(piece2));
 
             Assert.Equal(turnOffUntilexpected, piece2.TurnOffUntilAnother);
-            
+
             turnOffUntilexpected = false;
             Assert.Equal(turnOffUntilexpected, piece1.TurnOffUntilAnother);
-
         }
 
         [Fact]
         public void StartAction_MazeShouldCalculate()
         {
             // Arrange
-            ISpace expected = new StaticSpace(39, null);
+            ISpace expected = new StaticSpace(39);
             // Act
             int MaxIndex = 63;
             Board board = new Board(new SpacePack(MaxIndex));
@@ -193,14 +182,13 @@ namespace GooseGame.Tests
             ISpace actual = piece.PieceCurrentSpace;
             // Assert
             Assert.Equal(expected.Index, actual.Index);
-
         }
 
         [Fact]
         public void StartAction_DeathShouldCalculate()
         {
             // Arrange
-            ISpace expected = new StaticSpace(1, null);
+            ISpace expected = new StartSpace(SpaceTypes.StartSpace);
             // Act
             int MaxIndex = 63;
             Board board = new Board(new SpacePack(MaxIndex));
@@ -216,14 +204,13 @@ namespace GooseGame.Tests
             ISpace actual = piece.PieceCurrentSpace;
             // Assert
             Assert.Equal(expected.Index, actual.Index);
-
         }
 
         [Fact]
         public void StartAction_PrisonShouldCalculate()
         {
             // Arrange
-            ISpace expected = new PrisonSpace(null);
+            ISpace expected = new PrisonSpace(SpaceTypes.PrisonSpace);
             bool turnOffexpected = true;
 
             // Act
@@ -244,7 +231,6 @@ namespace GooseGame.Tests
 
             Assert.Equal(expected.Index, actual.Index);
             Assert.Equal(turnOffexpected, piece.LeftRollsToMiss > 3);
-
         }
     }
 }

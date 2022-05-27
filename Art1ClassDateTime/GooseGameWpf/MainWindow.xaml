@@ -1,0 +1,96 @@
+﻿<Window x:Class="GooseGameWpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GooseGameWpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="800">
+    <Grid Margin="0,35,0,25" ScrollViewer.HorizontalScrollBarVisibility="Auto" UseLayoutRounding="False" ShowGridLines="True">
+        <StatusBar Margin="0,416,0,0" Grid.Row="1" Grid.Column="3"/>
+        <Menu Margin="0,0,0,412" Grid.Row="1" Grid.Column="3"/>
+        <Grid x:Name="BoardGrid" Grid.Row="20" Grid.Column="20" Visibility="Visible">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.Background>
+                <ImageBrush ImageSource="/GooseGame.jpg"/>
+            </Grid.Background>
+            <Image x:Name="PieceParkingGreen" Grid.Column="0" Grid.Row="0" Stretch="Uniform" Source="/PieceGreen.png" >
+                <Image.OpacityMask>
+                    <ImageBrush ImageSource="/PieceGreen.png" Stretch="UniformToFill"/>
+                </Image.OpacityMask>
+            </Image>
+            <Image x:Name="PieceParkingBlue" Grid.Column="1" Grid.Row="0" Stretch="Uniform" Source="/PieceBlue.png" >
+                <Image.OpacityMask>
+                    <ImageBrush ImageSource="/PieceBlue.png" Stretch="UniformToFill"/>
+                </Image.OpacityMask>
+            </Image>
+            <Image x:Name="PieceParkingRed" Grid.Column="0" Grid.Row="1" Stretch="Uniform" Source="/PieceRed.png" >
+                <Image.OpacityMask>
+                    <ImageBrush ImageSource="/PieceRed.png" Stretch="UniformToFill"/>
+                </Image.OpacityMask>
+            </Image>
+            <Image x:Name="PieceParkingYellow" Grid.Column="1" Grid.Row="1" Stretch="Uniform" Source="/PieceYellow.png" >
+                <Image.OpacityMask>
+                    <ImageBrush ImageSource="/PieceYellow.png" Stretch="UniformToFill"/>
+                </Image.OpacityMask>
+            </Image>
+            <ToggleButton x:Name="RollButton" Grid.Column="20" Grid.Row="10" Grid.ColumnSpan="4" Grid.RowSpan="2" Margin="5" IsEnabled="False"/>
+        </Grid>
+
+    </Grid>
+</Window>

@@ -1,27 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Money
+﻿namespace Money
 {
     public abstract class Rekening : IRekening
     {
         private double saldo;
+
         public double Saldo
         {
             get
             { return saldo; }
-
         }
-        public Rekening() {}
+
+        public Rekening()
+        { }
+
         public Rekening(double basicCapital)
         {
             VoegGeldToe(basicCapital);
         }
-        public abstract double BerekenRente();
 
+        public abstract double BerekenRente();
 
         public double HaalGeldAf(double sum)
         {
@@ -51,5 +48,4 @@ namespace Money
         public string Name { get; set; }
         public string Number { get; set; }
     }
-
 }
