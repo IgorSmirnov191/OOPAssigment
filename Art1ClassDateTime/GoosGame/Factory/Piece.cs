@@ -19,8 +19,9 @@ namespace GooseGame
             PiecePlayer = piecePlayer;
         }
 
+        public Piece() { }
         public ConsoleColor Colour { get; set; }
-        public Shape PieceShape { get; set; }
+        public IShape PieceShape { get; set; }
         public Player PiecePlayer { get; set; }
         public int LeftRollsToMiss { get; set; } = 0;
 

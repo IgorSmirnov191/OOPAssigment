@@ -10,18 +10,16 @@ namespace GooseGame
             Boards.Add(activeBoard);
             ActiveBoard = activeBoard;
         }
-
-        public string Name { get; set; }
+        public Game(Board activeBoard) 
+        {
+            Boards.Add(activeBoard);
+            ActiveBoard = activeBoard;
+        }
+        public string Name { get; set; } = "GooseGame";
         public List<Board> Boards { get; set; } = new List<Board>();
         public List<ISpace> Spaces { get; set; } = new List<ISpace>();
 
-        public Board ActiveBoard { get; set; }
-
-        public void AddPayer(string name, string pas)
-        { }
-
-        public void PlayerLogon(string name, string pass)
-        { }
+        public Board ActiveBoard { get; set; } = null;
 
         public void Exit()
         { }

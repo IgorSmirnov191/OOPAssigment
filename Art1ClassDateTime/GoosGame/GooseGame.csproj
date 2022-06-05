@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Factory\Board.cs" />
     <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="PresentationLayer\IShape.cs" />
     <Compile Include="Spaces\BridgeSpace.cs" />
     <Compile Include="Spaces\DeathSpace.cs" />
     <Compile Include="Factory\DiceRoller.cs" />

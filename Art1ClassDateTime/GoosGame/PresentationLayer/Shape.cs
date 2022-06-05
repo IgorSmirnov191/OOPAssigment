@@ -1,8 +1,13 @@
 ﻿namespace GooseGame
 {
-    public class Shape
+    public class Shape : IShape
     {
-        string Name { get; set; }
-        string Picture { get; set; }
+        public string Name { get; set; }
+        public string Picture { get; set; }
+        public Shape(string name, string picture)
+        {
+            Name = name;
+            Picture = picture;
+        }
     }
 }

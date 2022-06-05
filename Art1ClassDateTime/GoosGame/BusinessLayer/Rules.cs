@@ -4,6 +4,8 @@ namespace GooseGame
 {
     public class Rules
     {
+        public static int MaxSpaceIndex = 63;
+        public static int DoubleDicer = 2;
         public enum ActionRules
         {
             Unknown, None, FlyWithGoos, GoToStart, GoTo12, GoTo39, SkipOneTurn, SkipThreeTurns, WaitUntilAnotherArrives, WinnerStopGame

@@ -16,11 +16,12 @@ namespace GooseGame
         public int TurnCount { get; private set; } = 0;
         public int SpaceForward { get; set; } = 0;
         public bool BackForward { get; set; } = false;
-        private Queue<Piece> TurnContainer { get; set; }
+        public IPiece CurrentPiece { get; set; }
+        private Queue<IPiece> TurnContainer { get; set; }
 
         public bool Start()
         {
-            TurnContainer = new Queue<Piece>();
+            TurnContainer = new Queue<IPiece>();
             if (!PrepareTurnContainer())
             {
                 _logger.Log("There are no players in the game");
@@ -33,21 +34,23 @@ namespace GooseGame
         public void Stop()
         {
             TurnCount = 0;
-            TurnContainer.Clear();
+            if (TurnContainer!=null)
+            {
+                TurnContainer.Clear();
+            }
         }
 
         public bool Roll()
         {
             bool stopgame = false;
-            Piece currentspiece = null;
             DiceRoller dice = this.Board.DiceRoller;
             dice?.Roll();
             SpaceForward = dice.DicesScore;
             if (TurnContainer.Count != 0)
             {
-                currentspiece = TurnContainer.Dequeue();
+                CurrentPiece = TurnContainer.Dequeue();
 
-                if (TurnCount == 0 && currentspiece.PieceCurrentSpace.Index == 1)
+                if (TurnCount == 0 && CurrentPiece.PieceCurrentSpace.Index == 1)
                 {
                     if ((dice.Scoores[0] == 5 && dice.Scoores[1] == 4) ||
                             (dice.Scoores[1] == 5 && dice.Scoores[0] == 4))
@@ -61,7 +64,7 @@ namespace GooseGame
                     }
                 }
 
-                stopgame = StartAction(currentspiece, MakeTurn(currentspiece));
+                stopgame = StartAction(CurrentPiece, MakeTurn(CurrentPiece));
             }
             else
 
@@ -74,11 +77,12 @@ namespace GooseGame
                     if (piece.LeftRollsToMiss > 0) piece.LeftRollsToMiss--;
                 }
                 PrepareTurnContainer();
+                stopgame=Roll();
             }
             return stopgame;
         }
 
-        public bool StartAction(Piece spiece, ISpace toSpace)
+        public bool StartAction(IPiece spiece, ISpace toSpace)
         {
             bool won = false;
 
@@ -156,7 +160,7 @@ namespace GooseGame
             return won;
         }
 
-        public ISpace MakeTurn(Piece current)
+        public ISpace MakeTurn(IPiece current)
         {
             BackForward = false;
             int forwardIndex = current.PieceCurrentSpace.Index + SpaceForward;

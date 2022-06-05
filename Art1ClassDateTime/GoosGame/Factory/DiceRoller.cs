@@ -15,7 +15,7 @@ namespace GooseGame
 
         public int DicesScore { get; private set; } = 0;
 
-        public List<int> Scoores { get; set; } = new List<int>();
+        public IList<int> Scoores { get; set; } = new List<int>();
 
         public Random RandomRoller { get; set; }
 

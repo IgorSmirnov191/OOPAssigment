@@ -1,9 +1,8 @@
 ﻿namespace GooseGame
 {
-    public interface IPlayer
+    public interface IShape
     {
         string Name { get; set; }
-        string Pass { get; set; }
-       
+        string Picture { get; set; }
     }
 }

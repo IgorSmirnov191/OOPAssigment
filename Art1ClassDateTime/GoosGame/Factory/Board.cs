@@ -4,19 +4,17 @@ namespace GooseGame
 {
     public class Board
     {
-        public const int DoubleDicer = 2;
-
         public Board(SpacePack pak)
         {
             Spaces = pak.Spaces;
             MaxIndex = pak.MaxIndexOfBoard;
             Sequenser = new Sequenser(this);
             Logger = new ConsoleLogger();
-            DiceRoller = new DiceRoller(DoubleDicer);
+            DiceRoller = new DiceRoller(Rules.DoubleDicer);
         }
 
         public int MaxIndex { get; set; }
-        public IList<Piece> Pieces { get; set; } = new List<Piece>();
+        public IList<IPiece> Pieces { get; set; } = new List<IPiece>();
         public IList<ISpace> Spaces { get; set; }
         public Sequenser Sequenser { get; set; }
         public ILogger Logger { get; set; }
@@ -27,9 +25,21 @@ namespace GooseGame
 
         public bool Start()
         {
+            foreach (IPiece piece in Pieces)
+            {
+                piece.LocateTo(new StartSpace(1));
+            }
             return Sequenser.Start();
         }
 
+        public void Stop()
+        {
+            foreach(IPiece piece in Pieces)
+            {
+                piece.LocateTo(new StaticSpace(0));
+            }
+            Sequenser.Stop();
+        }
         public void Commit()
         { }
 

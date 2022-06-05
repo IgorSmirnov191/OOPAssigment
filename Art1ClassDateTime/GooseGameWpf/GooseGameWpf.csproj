@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,6 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\GameViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -69,6 +71,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Elements.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -95,19 +98,43 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="GooseGame.jpg" />
+    <Resource Include="Images\GooseGame.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="PieceGreen.png" />
+    <Resource Include="Images\PieceGreen.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="PieceBlue.png" />
+    <Resource Include="Images\PieceBlue.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="PieceRed.png" />
+    <Resource Include="Images\PieceRed.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="PieceYellow.png" />
+    <Resource Include="Images\PieceYellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\RollerBackGround.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\DiceSix.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\DiceThree.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\DiceFive.png" />
+    <Resource Include="Images\DiceFour.png" />
+    <Resource Include="Images\DiceOne.png" />
+    <Resource Include="Images\DiceTwo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GoosGame\GooseGame.csproj">
+      <Project>{6937be16-ac1e-4515-a383-9e045bea6416}</Project>
+      <Name>GooseGame</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\PieceDefault.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
