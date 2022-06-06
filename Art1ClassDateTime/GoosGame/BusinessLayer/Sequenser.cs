@@ -152,6 +152,7 @@ namespace GooseGame
                     }
                 case Rules.ActionRules.WinnerStopGame:
                     {
+                        spiece.LocateTo(toSpace);
                         _logger.Log($"Game Over {spiece.PiecePlayer.Name} won!");
                         won = true;
                         break;

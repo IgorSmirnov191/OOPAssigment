@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:GooseGameWpf"
+        xmlns:local="clr-namespace:GooseGameWpf" xmlns:viewmodels="clr-namespace:GooseGameWpf.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:GameViewModel}"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="800">
     <Grid  ScrollViewer.HorizontalScrollBarVisibility="Auto" UseLayoutRounding="False" ShowGridLines="True">
@@ -68,26 +68,26 @@
                 <ImageBrush ImageSource="Images/GooseGame.jpg"/>
             </Grid.Background>
             <CheckBox x:Name="chbLogonPlayer1" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Checked="HandleCheckUser1" Unchecked="HandleUncheckedUser1"/>
-            <TextBox x:Name="txUser1Name" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding UserNames[0]}" VerticalAlignment="Center" MaxLines="1"/>
+            <TextBox x:Name="txUser1Name" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding Path=UserNames[0], Mode=TwoWay}" VerticalAlignment="Center" MaxLines="1"/>
             <CheckBox x:Name="chbLogonPlayer2" Grid.Row="0" Grid.Column="26" VerticalAlignment="Center" HorizontalAlignment="Right" Checked="HandleCheckUser2" Unchecked="HandleUncheckedUser2"/>
-            <TextBox x:Name="txUser2Name" Grid.Row="0" Grid.Column="27" Grid.ColumnSpan="3" Text="{Binding UserNames[1]}" MaxLines="1" VerticalAlignment="Center"/>
+            <TextBox x:Name="txUser2Name" Grid.Row="0" Grid.Column="27" Grid.ColumnSpan="3" Text="{Binding Path=UserNames[1], Mode=TwoWay}" MaxLines="1" VerticalAlignment="Center"/>
             <CheckBox x:Name="chbLogonPlayer3" Grid.Row="20" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Checked="HandleCheckUser3" Unchecked="HandleUncheckedUser3"/>
-            <TextBox x:Name="txUser3Name" Grid.Row="20" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding UserNames[2]}" MaxLines="1" VerticalAlignment="Center"/>
+            <TextBox x:Name="txUser3Name" Grid.Row="20" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding Path=UserNames[2], Mode=TwoWay}" MaxLines="1" VerticalAlignment="Center"/>
             <CheckBox x:Name="chbLogonPlayer4" Grid.Row="120" Grid.Column="26" VerticalAlignment="Center" HorizontalAlignment="Right" Checked="HandleCheckUser4" Unchecked="HandleUncheckedUser4"/>
-            <TextBox x:Name="txUser4Name" Grid.Row="20" Grid.Column="27" Grid.ColumnSpan="3" Text="{Binding UserNames[3]}" VerticalAlignment="Center" MaxLines="1"/>
+            <TextBox x:Name="txUser4Name" Grid.Row="20" Grid.Column="27" Grid.ColumnSpan="3" Text="{Binding Path=UserNames[3], Mode=TwoWay}" VerticalAlignment="Center" MaxLines="1"/>
 
 
             <StackPanel x:Name="DiceRollerBackPanel" Grid.Row="6" Grid.Column="7" Grid.ColumnSpan="6" Grid.RowSpan="6" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Image x:Name="RollerBackGround" Stretch="Uniform" Source="Images/RollerBackGround.png" Opacity="0.5" Width="156" HorizontalAlignment="Center" VerticalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" />
             </StackPanel>
 
-            <Image x:Name="Roller1" Grid.Row="7" Grid.Column="8" Grid.ColumnSpan="2" Grid.RowSpan="2" Stretch="Uniform"  HorizontalAlignment="Left" VerticalAlignment="Top" Source="{Binding ScoorOne}"/>
-            <Image x:Name="Roller2" Grid.Row="9" Grid.Column="10" Grid.ColumnSpan="2" Grid.RowSpan="2" Stretch="Uniform"  HorizontalAlignment="Left" VerticalAlignment="Top" Source="{Binding ScoorTwo}"/>
+            <Image x:Name="Roller1" Grid.Row="7" Grid.Column="8" Grid.ColumnSpan="2" Grid.RowSpan="2" Stretch="Uniform"  HorizontalAlignment="Left" VerticalAlignment="Top" Source="{Binding Path=ScoorOne, Mode=TwoWay}"/>
+            <Image x:Name="Roller2" Grid.Row="9" Grid.Column="10" Grid.ColumnSpan="2" Grid.RowSpan="2" Stretch="Uniform"  HorizontalAlignment="Left" VerticalAlignment="Top" Source="{Binding Path=ScoorTwo, Mode=TwoWay}"/>
 
-            <Image x:Name="PieceParking00" Grid.Row="9" Grid.Column="8" Stretch="Uniform" Source="{Binding DefaultPieceIcon}" />
-            <Image x:Name="PieceParking01" Grid.Row="9" Grid.Column="9" Stretch="Uniform" Source="{Binding DefaultPieceIcon}" />
-            <Image x:Name="PieceParking10" Grid.Row="10" Grid.Column="8" Stretch="Uniform" Source="{Binding DefaultPieceIcon}" />
-            <Image x:Name="PieceParking11" Grid.Row="10" Grid.Column="9" Stretch="Uniform" Source="{Binding DefaultPieceIcon}" />
+            <Image x:Name="PieceParking00" Grid.Row="9" Grid.Column="8" Stretch="Uniform" Source="{Binding Path=DefaultPieceIcon}" />
+            <Image x:Name="PieceParking01" Grid.Row="9" Grid.Column="9" Stretch="Uniform" Source="{Binding Path=DefaultPieceIcon}" />
+            <Image x:Name="PieceParking10" Grid.Row="10" Grid.Column="8" Stretch="Uniform" Source="{Binding Path=DefaultPieceIcon}" />
+            <Image x:Name="PieceParking11" Grid.Row="10" Grid.Column="9" Stretch="Uniform" Source="{Binding Path=DefaultPieceIcon}" />
 
             <Image Grid.Row="0" Grid.Column="4" Stretch="Uniform" Source="Images/PieceBlue.png" />
             <Image Grid.Row="0" Grid.Column="30" Stretch="Uniform" Source="Images/PieceGreen.png" />
@@ -96,8 +96,8 @@
 
 
             <TextBox x:Name="txGameName" Grid.Row="6" Grid.Column="13" Grid.ColumnSpan="5"
-                    Text="{Binding GameName}" RenderTransformOrigin="0.471,0.466" Margin="26,14,26,19" Grid.RowSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" MaxLines="1"/>
-            <Label x:Name="lbGameOver" Grid.Row="13" Grid.Column="11" Grid.ColumnSpan="9" Foreground="Black" RenderTransformOrigin="0.47,0.5" Height="24" VerticalAlignment="Top" Margin="23,19,13,0" Grid.RowSpan="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                    Text="{Binding Path=GameName, Mode=TwoWay}" RenderTransformOrigin="0.471,0.466" Margin="26,14,26,19" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" MaxLines="1"/>
+            <Label x:Name="lbGameOver" Content="{Binding Path=GameOver, Mode=TwoWay}" Grid.Row="13" Grid.Column="11" Grid.ColumnSpan="9" Foreground="Black" RenderTransformOrigin="0.47,0.5" Height="24" VerticalAlignment="Top" Margin="23,19,13,0" Grid.RowSpan="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
 
 
             <CheckBox x:Name="cbLog" Grid.Row="13" Grid.Column="20" VerticalAlignment="Center" HorizontalAlignment="Right" Checked="HandleLogCheck" Unchecked="HandleLogUnchecked"/>

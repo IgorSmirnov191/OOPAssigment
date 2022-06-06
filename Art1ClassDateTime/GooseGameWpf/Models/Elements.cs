@@ -99,7 +99,7 @@ namespace GooseGameWpf.Models
                 { 60, new List<Point> { new Point(11,4), new Point(11,5), new Point(11,6), new Point(10,4) } },
                 { 61, new List<Point> { new Point(13,6), new Point(12,6), new Point(12,7), new Point(11,7) } },
                 { 62, new List<Point> { new Point(13,7), new Point(12,8), new Point(13,8), new Point(14,8) } },
-                { 63, new List<Point> { new Point(12,10), new Point(12,10), new Point(12,10), new Point(12,10) } } //End
+                { 63, new List<Point> { new Point(10,15), new Point(10,15), new Point(10,15), new Point(10,15) } } //End
 
 
         };

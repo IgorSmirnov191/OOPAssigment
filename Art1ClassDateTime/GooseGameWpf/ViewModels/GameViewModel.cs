@@ -7,14 +7,50 @@ using System.Threading.Tasks;
 using GooseGame;
 using GooseGameWpf.Models;
 using System.Windows.Media;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace GooseGameWpf.ViewModels
 {
-    internal class GameViewModel
+    internal class GameViewModel: INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
         public string DefaultPieceIcon { get; set; } = "Images/PieceDefault.png";
-        public string ScoorOne { get; set; } = "Images/DiceSix.png";
-        public string ScoorTwo { get; set; } = "Images/DiceThree.png";
+        private string _scoorOne = "Images/DiceSix.png";
+        private string _scoorTwo = "Images/DiceThree.png";
+        public string ScoorOne 
+        {
+            get { return _scoorOne; }
+            set 
+            {
+                if(_scoorOne != value)
+                {
+                    _scoorOne = value;
+                    OnPropertyChanged();
+                }
+            
+            } 
+        
+        }
+        public string ScoorTwo
+        {
+            get { return _scoorTwo; }
+            set
+            {
+                if (_scoorTwo != value)
+                {
+                    _scoorTwo = value;
+                    OnPropertyChanged();
+                }
+
+            }
+
+        }
+        
 
         public IList<string> UserNames { get; set; } = new List<string>
         {
@@ -24,12 +60,33 @@ namespace GooseGameWpf.ViewModels
             "Player4"
         };
         
+
         public string GameName 
         {
             get { return Game.Name; }
-            set { Game.Name = value; }
+            set
+            {
+                if (Game.Name != value)
+                {
+                    Game.Name = value;
+                    OnPropertyChanged();
+                }
+            }
         }
-        public string GameOver { get; set; }
+        private string _gameOver;
+        public string GameOver 
+        {
+            get { return _gameOver; }
+            set
+            {
+                if(value != _gameOver)
+                {
+                    _gameOver = value;
+                    OnPropertyChanged();
+                }
+            
+            }
+        }
         public ConsoleColor GameOverColour { get; set;}
         public GameViewModel()
         {
