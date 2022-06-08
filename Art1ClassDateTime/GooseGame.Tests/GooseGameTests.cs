@@ -68,8 +68,8 @@ namespace GooseGame.Tests
             board.Sequenser.Board.DiceRoller.Scoores.Add(1);
             board.Sequenser.Board.DiceRoller.Scoores.Add(3);
             board.Sequenser.SpaceForward = 4;
-
-            bool actual = board.Sequenser.StartAction(piece, board.Sequenser.MakeTurn(piece));
+            var boardactual = board.Sequenser.StartAction(piece, board.Sequenser.MakeTurn(piece));
+            bool actual = boardactual.Item1;
 
             // Assert
             Assert.Equal(expected, actual);

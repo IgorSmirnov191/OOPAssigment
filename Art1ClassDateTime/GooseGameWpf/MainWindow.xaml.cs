@@ -28,8 +28,8 @@ namespace GooseGameWpf
 
         private void StartStopButton_Click(object sender, RoutedEventArgs e)
         {
-            lbGameOver.Background = new SolidColorBrush(Colors.White);
-            lbGameOver.Foreground = new SolidColorBrush(Color.FromRgb(0,0,0));
+            tblGameOver.Background = new SolidColorBrush(Colors.White);
+            tblGameOver.Foreground = new SolidColorBrush(Color.FromRgb(0,0,0));
             if (!btRollButton.IsEnabled)
             {
                 if (viewModel.Game.ActiveBoard.Pieces.Count > 1)
@@ -52,7 +52,7 @@ namespace GooseGameWpf
                 btRollButton.IsEnabled = false;
                 btStartStopButton.Content = "Start";
                 viewModel.BoardToParking();
-                lbGameOver.Content = "";
+                tblGameOver.Text = "";
                 ChangeLogonAccess(true);
             }
            
@@ -77,8 +77,8 @@ namespace GooseGameWpf
         {
             btRollButton.IsEnabled = !viewModel.Roll();
             RefreshAllGridPieceLocation();
-            lbGameOver.Background = new SolidColorBrush(Colors.LightGray);
-            lbGameOver.Foreground = new SolidColorBrush(viewModel.GetColorFromConsoleColor(viewModel.GameOverColour));
+            tblGameOver.Background = new SolidColorBrush(Colors.LightGray);
+            tblGameOver.Foreground = new SolidColorBrush(viewModel.GetColorFromConsoleColor(viewModel.GameOverColour));
 
         }
 
@@ -185,12 +185,14 @@ namespace GooseGameWpf
         }
         private void HandleLogUnchecked(object sender, RoutedEventArgs e)
         {
-            //
+            viewModel.GameOver = "";
+            viewModel.InfoAllowed = false;
         }
 
         private void HandleLogCheck(object sender, RoutedEventArgs e)
         {
-            //
+            viewModel.GameOver = "";
+            viewModel.InfoAllowed = true;
         }
 
         private void HandleCheckUser1(object sender, RoutedEventArgs e)

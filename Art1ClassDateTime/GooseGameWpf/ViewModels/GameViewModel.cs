@@ -87,6 +87,7 @@ namespace GooseGameWpf.ViewModels
             
             }
         }
+        public bool InfoAllowed { get; set; } = false;
         public ConsoleColor GameOverColour { get; set;}
         public GameViewModel()
         {
@@ -117,7 +118,9 @@ namespace GooseGameWpf.ViewModels
 
         public bool BoardToStart()
         {
-            return Game.ActiveBoard.Start();
+            var boardToStart = Game.ActiveBoard.Start();
+            GameOver = boardToStart.Item2;
+            return boardToStart.Item1 ;
         }
 
         public void BoardToParking()
@@ -126,20 +129,21 @@ namespace GooseGameWpf.ViewModels
         }
         public bool Roll() 
         {
-            bool result = Game.ActiveBoard.Roll();
-            if(result)
+            var result = Game.ActiveBoard.Roll();
+            if (InfoAllowed)
             {
-               
-                GameOver = $"{CurrentSpiece.PiecePlayer.Name} is winner. Game over.";
+                GameOver = result.Item2;
             }
-            else
+            Game.ActiveBoard.Sequenser.TurnLog = "";
+            if(result.Item1)
             {
-                GameOver = $"{CurrentSpiece.PiecePlayer.Name} locate to Space {CurrentSpiece.PieceCurrentSpace.Index}";
+                GameOver = $"{CurrentSpiece.PiecePlayer.Name} is winner. Game over. ";
             }
+            
             GameOverColour = CurrentSpiece.Colour;
             ScoorOne = Elements.diceIcons[Game.ActiveBoard.DiceRoller.Scoores[0]];
             ScoorTwo = Elements.diceIcons[Game.ActiveBoard.DiceRoller.Scoores[1]];
-            return result;
+            return result.Item1;
         }
         public void AddUser(string Name, PiecesColour color)
         {
@@ -189,11 +193,12 @@ namespace GooseGameWpf.ViewModels
                 case ConsoleColor.Blue:
                    return Color.FromRgb(0,0,0xff);
                 case ConsoleColor.Green:
-                   return Color.FromRgb(0,0xff,0);
+                   return Color.FromRgb(0x72,0x8f,0x02);
                 case ConsoleColor.Red:
                     return Color.FromRgb(0xff, 0, 0);
                 case ConsoleColor.Yellow:
-                    return Color.FromRgb(0xff,0xff,0);
+                    return Color.FromRgb(0xfd,0xa5,0x0f);
+                   
 
             }
             return Color.FromRgb(0,0,0);

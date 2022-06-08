@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace GooseGame
 {
@@ -23,7 +24,7 @@ namespace GooseGame
 
         public string Layout { get; set; }
 
-        public bool Start()
+        public Tuple<bool,string> Start()
         {
             foreach (IPiece piece in Pieces)
             {
@@ -43,8 +44,9 @@ namespace GooseGame
         public void Commit()
         { }
 
-        public bool Roll()
+        public Tuple<bool,string> Roll()
         {
+            
             return Sequenser.Roll();
         }
     }

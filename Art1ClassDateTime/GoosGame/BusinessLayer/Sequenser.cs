@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace GooseGame
 {
@@ -19,16 +20,20 @@ namespace GooseGame
         public IPiece CurrentPiece { get; set; }
         private Queue<IPiece> TurnContainer { get; set; }
 
-        public bool Start()
+        public string TurnLog { get; set; }
+        public Tuple<bool, string> Start()
         {
             TurnContainer = new Queue<IPiece>();
+           
             if (!PrepareTurnContainer())
             {
-                _logger.Log("There are no players in the game");
-                return false;
+                TurnLog = "There are no players in the game! ";
+                _logger.Log(TurnLog);
+                return Tuple.Create(false, TurnLog);
             }
-            _logger.Log("Turn 0");
-            return true;
+            string ruleslog = "Turn 0: ";
+            _logger.Log(ruleslog);
+            return Tuple.Create(true,"Good luck! ");
         }
 
         public void Stop()
@@ -40,9 +45,12 @@ namespace GooseGame
             }
         }
 
-        public bool Roll()
+        public Tuple<bool,string> Roll()
         {
+           
             bool stopgame = false;
+            var stopgamemessage = Tuple.Create(stopgame, TurnLog);
+           
             DiceRoller dice = this.Board.DiceRoller;
             dice?.Roll();
             SpaceForward = dice.DicesScore;
@@ -64,27 +72,29 @@ namespace GooseGame
                     }
                 }
 
-                stopgame = StartAction(CurrentPiece, MakeTurn(CurrentPiece));
+                stopgamemessage = StartAction(CurrentPiece, MakeTurn(CurrentPiece));
             }
             else
 
             {
                 TurnCount++;
-                _logger.Log($"Turn {TurnCount}");
+                string ruleslog = $"Turn {TurnCount}: ";
+                _logger.Log(ruleslog);
 
                 foreach (var piece in Board.Pieces)
                 {
                     if (piece.LeftRollsToMiss > 0) piece.LeftRollsToMiss--;
                 }
                 PrepareTurnContainer();
-                stopgame=Roll();
+                stopgamemessage = Roll();
             }
-            return stopgame;
+            return stopgamemessage;
         }
 
-        public bool StartAction(IPiece spiece, ISpace toSpace)
+        public Tuple<bool, string> StartAction(IPiece spiece, ISpace toSpace)
         {
             bool won = false;
+            var wonmessage = Tuple.Create(won, TurnLog);
 
             switch (toSpace.Action)
             {
@@ -96,48 +106,63 @@ namespace GooseGame
                 case Rules.ActionRules.GoToStart:
                     {
                         spiece.LocateTo(Board.Spaces[1]);
-                        _logger.Log($"{spiece.PiecePlayer.Name} Go to start!");
+                        string ruleslog = $"{spiece.PiecePlayer.Name} Go to start! ";
+                        TurnLog += ruleslog;
+                        _logger.Log(ruleslog);
                         break;
                     }
                 case Rules.ActionRules.FlyWithGoos:
                     {
                         spiece.LocateTo(toSpace);
                         string reverse = BackForward ? "reverse" : "";
-                        _logger.Log($"{spiece.PiecePlayer.Name} Fly with {reverse} goos!");
+                        string ruleslog = $"{spiece.PiecePlayer.Name} Fly with {reverse} goos! ";
+                        TurnLog += ruleslog;
+                        _logger.Log(ruleslog);
                         SpaceForward = BackForward ? SpaceForward * (-1) : SpaceForward; //reverse goos
-                        won = StartAction(spiece, MakeTurn(spiece));
+                        wonmessage = StartAction(spiece, MakeTurn(spiece));
                         break;
+                    
                     }
                 case Rules.ActionRules.GoTo12:
                     {
                         spiece.LocateTo(Board.Spaces[12]);
-                        _logger.Log($"{spiece.PiecePlayer.Name} goes to 12!");
+                        string ruleslog = $"{spiece.PiecePlayer.Name} goes to 12! ";
+                        TurnLog += ruleslog;
+                        _logger.Log(ruleslog);
                         break;
                     }
                 case Rules.ActionRules.GoTo39:
                     {
                         spiece.LocateTo(Board.Spaces[39]);
-                        _logger.Log($"{spiece.PiecePlayer.Name} goes to 39!");
+                        string ruleslog = $"{spiece.PiecePlayer.Name} goes to 39! ";
+                        TurnLog += ruleslog;
+                        _logger.Log(ruleslog);
                         break;
                     }
                 case Rules.ActionRules.SkipOneTurn:
                     {
                         spiece.LocateTo(toSpace);
                         spiece.LeftRollsToMiss = 2;
-                        _logger.Log($"{spiece.PiecePlayer.Name} skip one turn!");
+                        string ruleslog = $"{spiece.PiecePlayer.Name} skip one turn! ";
+                        TurnLog += ruleslog;
+                        _logger.Log(ruleslog);
                         break;
                     }
                 case Rules.ActionRules.SkipThreeTurns:
                     {
                         spiece.LocateTo(toSpace);
                         spiece.LeftRollsToMiss = 4;
-                        _logger.Log($"{spiece.PiecePlayer.Name} skip three turns!");
+                        string ruleslog = $"{spiece.PiecePlayer.Name} skip three turns! ";
+                        TurnLog += ruleslog;
+                        _logger.Log(ruleslog);
                         break;
                     }
                 case Rules.ActionRules.WaitUntilAnotherArrives:
                     {
                         spiece.LocateTo(toSpace);
-                        _logger.Log($"{spiece.PiecePlayer.Name} skip turn until another player arrives! ");
+                        string ruleslog = $"{spiece.PiecePlayer.Name} skip turn until another player arrives! ";
+                        TurnLog += ruleslog;
+                        _logger.Log(ruleslog);
                         spiece.TurnOffUntilAnother = true;
                         foreach (var spie in Board.Pieces)
                         {
@@ -145,7 +170,9 @@ namespace GooseGame
                                  && spiece.PiecePlayer.Name != spie.PiecePlayer.Name)
                             {
                                 spie.TurnOffUntilAnother = false;
-                                _logger.Log($"{spie.PiecePlayer.Name} can continue playing");
+                                string rulesloglocal = $"{spie.PiecePlayer.Name} can continue playing. ";
+                                TurnLog += rulesloglocal;
+                                _logger.Log(rulesloglocal);
                             }
                         }
                         break;
@@ -153,12 +180,14 @@ namespace GooseGame
                 case Rules.ActionRules.WinnerStopGame:
                     {
                         spiece.LocateTo(toSpace);
-                        _logger.Log($"Game Over {spiece.PiecePlayer.Name} won!");
-                        won = true;
+                        string ruleslog = $"Game Over {spiece.PiecePlayer.Name} won! ";
+                        TurnLog += ruleslog;
+                        _logger.Log(ruleslog);
+                        wonmessage = Tuple.Create(true, TurnLog);
                         break;
                     }
             }
-            return won;
+            return wonmessage;
         }
 
         public ISpace MakeTurn(IPiece current)
@@ -173,7 +202,11 @@ namespace GooseGame
             }
             ISpace space = this.Board.Spaces[forwardIndex];
             SpaceForward = Board.DiceRoller.DicesScore;
-            _logger.Log($"Piece {current.PiecePlayer.Name} {current.PieceCurrentSpace.Index} with {SpaceForward} eyes ({this.Board.DiceRoller.Scoores[0].ToString()}+{this.Board.DiceRoller.Scoores[1].ToString()}) relocate to {space.Name} {space.Index} with {space.Action}");
+            string _spaceName = space.Type != SpaceTypes.StaticSpace? $"{space.Name} {space.Index}":$"{space.Name}";
+            string _action = space.Action == Rules.ActionRules.None ? "": $"with {space.Action}";
+            string ruleslog = $"{current.PiecePlayer.Name} from {current.PieceCurrentSpace.Index} with {SpaceForward} eyes ({this.Board.DiceRoller.Scoores[0].ToString()}+{this.Board.DiceRoller.Scoores[1].ToString()}) relocate to {_spaceName} {_action} . ";
+            TurnLog += ruleslog;
+            _logger.Log(ruleslog);
 
             return space;
         }

@@ -16,7 +16,8 @@ namespace GooseGameConsoleApp
             game.ActiveBoard.Pieces.Add(new Piece(new Player("P2", "Password")));
             game.ActiveBoard.Pieces.Add(new Piece(new Player("P3", "Password")));
             game.ActiveBoard.Pieces.Add(new Piece(new Player("P4", "Password")));
-            if (!game.ActiveBoard.Start())
+            var boardToStart = game.ActiveBoard.Start();
+            if (!boardToStart.Item1)
             {
                 return;
             }
@@ -24,7 +25,8 @@ namespace GooseGameConsoleApp
             bool won = false;
             while (!won)
             {
-                won = game.ActiveBoard.Roll();
+                var wongame = game.ActiveBoard.Roll();
+                won = wongame.Item1;
             }
 
         }
