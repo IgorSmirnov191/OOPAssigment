@@ -9,80 +9,79 @@
     <Grid  ScrollViewer.HorizontalScrollBarVisibility="Auto" UseLayoutRounding="False" ShowGridLines="True">
         <Grid x:Name="gdBoardGrid" Visibility="Visible">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
             <Grid.Background>
-                <ImageBrush ImageSource="Images/GooseGame.jpg"/>
+                <ImageBrush ImageSource="Images/GooseGame.jpg" />
             </Grid.Background>
-            <CheckBox x:Name="chbLogonPlayer1" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Checked="HandleCheckUser1" Unchecked="HandleUncheckedUser1"/>
-            <TextBox x:Name="txUser1Name" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding Path=UserNames[0], Mode=TwoWay}" VerticalAlignment="Center" MaxLines="1"/>
-            <CheckBox x:Name="chbLogonPlayer2" Grid.Row="0" Grid.Column="26" VerticalAlignment="Center" HorizontalAlignment="Right" Checked="HandleCheckUser2" Unchecked="HandleUncheckedUser2"/>
-            <TextBox x:Name="txUser2Name" Grid.Row="0" Grid.Column="27" Grid.ColumnSpan="3" Text="{Binding Path=UserNames[1], Mode=TwoWay}" MaxLines="1" VerticalAlignment="Center"/>
-            <CheckBox x:Name="chbLogonPlayer3" Grid.Row="20" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Checked="HandleCheckUser3" Unchecked="HandleUncheckedUser3"/>
-            <TextBox x:Name="txUser3Name" Grid.Row="20" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding Path=UserNames[2], Mode=TwoWay}" MaxLines="1" VerticalAlignment="Center"/>
-            <CheckBox x:Name="chbLogonPlayer4" Grid.Row="120" Grid.Column="26" VerticalAlignment="Center" HorizontalAlignment="Right" Checked="HandleCheckUser4" Unchecked="HandleUncheckedUser4"/>
-            <TextBox x:Name="txUser4Name" Grid.Row="20" Grid.Column="27" Grid.ColumnSpan="3" Text="{Binding Path=UserNames[3], Mode=TwoWay}" VerticalAlignment="Center" MaxLines="1"/>
-
+            <CheckBox x:Name="chbLogonPlayer1" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Checked="HandleCheckUser1" Unchecked="HandleUncheckedUser1" />
+            <TextBox x:Name="txUser1Name" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding Path=UserNames[0], Mode=TwoWay}" VerticalAlignment="Center" MaxLines="1" />
+            <CheckBox x:Name="chbLogonPlayer2" Grid.Row="0" Grid.Column="26" VerticalAlignment="Center" HorizontalAlignment="Right" Checked="HandleCheckUser2" Unchecked="HandleUncheckedUser2" />
+            <TextBox x:Name="txUser2Name" Grid.Row="0" Grid.Column="27" Grid.ColumnSpan="3" Text="{Binding Path=UserNames[1], Mode=TwoWay}" MaxLines="1" VerticalAlignment="Center" />
+            <CheckBox x:Name="chbLogonPlayer3" Grid.Row="20" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" Checked="HandleCheckUser3" Unchecked="HandleUncheckedUser3" />
+            <TextBox x:Name="txUser3Name" Grid.Row="20" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding Path=UserNames[2], Mode=TwoWay}" MaxLines="1" VerticalAlignment="Center" />
+            <CheckBox x:Name="chbLogonPlayer4" Grid.Row="120" Grid.Column="26" VerticalAlignment="Center" HorizontalAlignment="Right" Checked="HandleCheckUser4" Unchecked="HandleUncheckedUser4" />
+            <TextBox x:Name="txUser4Name" Grid.Row="20" Grid.Column="27" Grid.ColumnSpan="3" Text="{Binding Path=UserNames[3], Mode=TwoWay}" VerticalAlignment="Center" MaxLines="1" />
 
             <StackPanel x:Name="DiceRollerBackPanel" Grid.Row="6" Grid.Column="7" Grid.ColumnSpan="6" Grid.RowSpan="6" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Image x:Name="RollerBackGround" Stretch="Uniform" Source="Images/RollerBackGround.png" Opacity="0.5" Width="156" HorizontalAlignment="Center" VerticalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" />
             </StackPanel>
 
-            <Image x:Name="Roller1" Grid.Row="7" Grid.Column="8" Grid.ColumnSpan="2" Grid.RowSpan="2" Stretch="Uniform"  HorizontalAlignment="Left" VerticalAlignment="Top" Source="{Binding Path=ScoorOne, Mode=TwoWay}"/>
-            <Image x:Name="Roller2" Grid.Row="9" Grid.Column="10" Grid.ColumnSpan="2" Grid.RowSpan="2" Stretch="Uniform"  HorizontalAlignment="Left" VerticalAlignment="Top" Source="{Binding Path=ScoorTwo, Mode=TwoWay}"/>
+            <Image x:Name="Roller1" Grid.Row="7" Grid.Column="8" Grid.ColumnSpan="2" Grid.RowSpan="2" Stretch="Uniform"  HorizontalAlignment="Left" VerticalAlignment="Top" Source="{Binding Path=ScoorOne, Mode=TwoWay}" />
+            <Image x:Name="Roller2" Grid.Row="9" Grid.Column="10" Grid.ColumnSpan="2" Grid.RowSpan="2" Stretch="Uniform"  HorizontalAlignment="Left" VerticalAlignment="Top" Source="{Binding Path=ScoorTwo, Mode=TwoWay}" />
 
             <Image x:Name="PieceParking00" Grid.Row="9" Grid.Column="8" Stretch="Uniform" Source="{Binding Path=DefaultPieceIcon}" />
             <Image x:Name="PieceParking01" Grid.Row="9" Grid.Column="9" Stretch="Uniform" Source="{Binding Path=DefaultPieceIcon}" />
@@ -94,17 +93,14 @@
             <Image Grid.Row="20" Grid.Column="4" Stretch="Uniform" Source="Images/PieceRed.png" />
             <Image Grid.Row="20" Grid.Column="30" Stretch="Uniform" Source="Images/PieceYellow.png" />
 
-
             <TextBox x:Name="txGameName" Grid.Row="6" Grid.Column="12" Grid.ColumnSpan="8"
-                    Text="{Binding Path=GameName, Mode=TwoWay}" RenderTransformOrigin="0.471,0.466" Margin="26,14,26,19" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" MaxLines="1"/>
-            <TextBlock x:Name="tblGameOver" Grid.Row="11" Grid.Column="10" Grid.RowSpan="4" Grid.ColumnSpan="10" HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.85" TextWrapping="Wrap" Foreground="Black" Text="{Binding Path=GameOver,Mode =TwoWay }" Margin="0,4,0,8" TextAlignment="Center"  />
+                    Text="{Binding Path=GameName, Mode=TwoWay}" RenderTransformOrigin="0.471,0.466" Margin="26,14,26,19" Grid.RowSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" MaxLines="1" />
+            <TextBlock x:Name="tblGameOver" Grid.Row="11" Grid.Column="10" Grid.RowSpan="4" Grid.ColumnSpan="10" HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.85" TextWrapping="Wrap" Foreground="Black" Text="{Binding Path=GameOver,Mode =TwoWay }" Margin="0,4,0,8" TextAlignment="Center" />
 
-
-            <CheckBox x:Name="cbLog" Grid.Row="13" Grid.Column="20" VerticalAlignment="Center" HorizontalAlignment="Right" Checked="HandleLogCheck" Unchecked="HandleLogUnchecked"/>
-            <Label x:Name="txLog" Grid.Row="13" Grid.Column="21" Grid.ColumnSpan="2"  VerticalAlignment="Center" Content="Info"/>
-            <Button Content ="Roll" x:Name="btRollButton" Grid.Column="20" Grid.Row="11" Grid.ColumnSpan="4" Grid.RowSpan="2" Margin="5" IsEnabled="False" Click="RollButton_Click" FontWeight="Bold"/>
-            <Button Content ="Start" x:Name="btStartStopButton" Grid.Column="20" Grid.Row="9" Grid.ColumnSpan="4" Grid.RowSpan="2" Margin="5" Click="StartStopButton_Click" FontWeight="Bold"/>
+            <CheckBox x:Name="cbLog" Grid.Row="13" Grid.Column="20" VerticalAlignment="Center" HorizontalAlignment="Right" Checked="HandleLogCheck" Unchecked="HandleLogUnchecked" IsChecked="True" />
+            <Label x:Name="txLog" Grid.Row="13" Grid.Column="21" Grid.ColumnSpan="2"  VerticalAlignment="Center" Content="Info" />
+            <Button Content ="Roll" x:Name="btRollButton" Grid.Column="20" Grid.Row="11" Grid.ColumnSpan="4" Grid.RowSpan="2" Margin="5" IsEnabled="False" Click="RollButton_Click" FontWeight="Bold" />
+            <Button Content ="Start" x:Name="btStartStopButton" Grid.Column="20" Grid.Row="9" Grid.ColumnSpan="4" Grid.RowSpan="2" Margin="5" Click="StartStopButton_Click" FontWeight="Bold" />
         </Grid>
-
     </Grid>
 </Window>

@@ -24,7 +24,7 @@ namespace GooseGame
 
         public string Layout { get; set; }
 
-        public Tuple<bool,string> Start()
+        public Tuple<bool, string> Start()
         {
             foreach (IPiece piece in Pieces)
             {
@@ -35,18 +35,18 @@ namespace GooseGame
 
         public void Stop()
         {
-            foreach(IPiece piece in Pieces)
+            foreach (IPiece piece in Pieces)
             {
                 piece.LocateTo(new StaticSpace(0));
             }
             Sequenser.Stop();
         }
+
         public void Commit()
         { }
 
-        public Tuple<bool,string> Roll()
+        public Tuple<bool, string> Roll()
         {
-            
             return Sequenser.Roll();
         }
     }

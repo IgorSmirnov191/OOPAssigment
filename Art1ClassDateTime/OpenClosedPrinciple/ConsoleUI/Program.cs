@@ -8,7 +8,7 @@ namespace ConsoleUI
     {
         private static void Main(string[] args)
         {
-                List<IApplicantModel> applicants = new List<IApplicantModel> {
+            List<IApplicantModel> applicants = new List<IApplicantModel> {
                 new PersonModel{FirstName = "Tim", LastName = "Corey"},
                 new PersonModel{FirstName = "Sue", LastName = "Storm"},
                 new ExecutiveModel{FirstName = "Nancy", LastName = "Roman"},
@@ -16,7 +16,6 @@ namespace ConsoleUI
             };
 
             List<EmployeeModel> employees = new List<EmployeeModel>();
-
 
             foreach (var person in applicants)
             {

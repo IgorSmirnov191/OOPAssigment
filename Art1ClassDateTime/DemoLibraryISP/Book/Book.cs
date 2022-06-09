@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DemoLibraryISP
 {
@@ -23,13 +19,13 @@ namespace DemoLibraryISP
 
         public void CheckOut(string borrower)
         {
-           Borrower = borrower;
+            Borrower = borrower;
             BorrowerDate = DateTime.Now;
         }
 
         public DateTime GetDueDate()
         {
-           return BorrowerDate.AddDays(CheckOutDurationInDays);
+            return BorrowerDate.AddDays(CheckOutDurationInDays);
         }
     }
 }

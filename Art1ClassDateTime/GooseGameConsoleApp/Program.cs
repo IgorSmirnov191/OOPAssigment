@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GooseGame;
+﻿using GooseGame;
 
 namespace GooseGameConsoleApp
 {
     public class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Game game = new Game("GooseBoard", new Board(new SpacePack(Rules.MaxSpaceIndex)));
             game.ActiveBoard.Pieces.Add(new Piece(new Player("P1", "Password")));
@@ -28,7 +23,6 @@ namespace GooseGameConsoleApp
                 var wongame = game.ActiveBoard.Roll();
                 won = wongame.Item1;
             }
-
         }
     }
 }

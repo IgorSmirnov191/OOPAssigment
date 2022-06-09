@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Money
+﻿namespace Money
 {
     public class TransactionGenerator
     {
@@ -13,7 +7,7 @@ namespace Money
             StandardMessages.DisplayTransactionStartAccountInfo(rekening.Name, rekening.Number, rekening.Saldo);
         }
 
-        public static void TransactionVoegGeldToe(IRekening rekening,double amount)
+        public static void TransactionVoegGeldToe(IRekening rekening, double amount)
         {
             StandardMessages.DisplayTransactionAddMoneyInfo(amount);
             rekening.VoegGeldToe(amount);
@@ -21,9 +15,10 @@ namespace Money
 
         public static void TransactionHaalGeldAf(IRekening rekening, double amount)
         {
-           StandardMessages.DisplayTransactionTakeMoneyOffInfo(amount);
-           rekening.HaalGeldAf(amount);
+            StandardMessages.DisplayTransactionTakeMoneyOffInfo(amount);
+            rekening.HaalGeldAf(amount);
         }
+
         public static double TransactionBerekerenRente(IRekening rekening)
         {
             double amount = rekening.BerekenRente();

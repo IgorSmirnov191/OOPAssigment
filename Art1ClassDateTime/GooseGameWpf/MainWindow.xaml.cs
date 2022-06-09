@@ -1,13 +1,11 @@
-﻿using System.Windows;
-
-using System.Windows.Controls;
-using GooseGame;
-using GooseGameWpf.ViewModels;
+﻿using GooseGame;
 using GooseGameWpf.Models;
+using GooseGameWpf.ViewModels;
 using System;
-using System.Windows.Media.Imaging;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
-
+using System.Windows.Media.Imaging;
 
 namespace GooseGameWpf
 {
@@ -17,19 +15,17 @@ namespace GooseGameWpf
     public partial class MainWindow : Window
     {
         private GameViewModel viewModel = new GameViewModel();
-       
+
         public MainWindow()
         {
             InitializeComponent();
             DataContext = viewModel;
-           
-
         }
 
         private void StartStopButton_Click(object sender, RoutedEventArgs e)
         {
             tblGameOver.Background = new SolidColorBrush(Colors.White);
-            tblGameOver.Foreground = new SolidColorBrush(Color.FromRgb(0,0,0));
+            tblGameOver.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
             if (!btRollButton.IsEnabled)
             {
                 if (viewModel.Game.ActiveBoard.Pieces.Count > 1)
@@ -40,12 +36,11 @@ namespace GooseGameWpf
                     viewModel.GameOver = "Hello to all players";
                     ChangeLogonAccess(false);
                 }
-                else 
+                else
                 {
                     viewModel.GameOver = "Min 2 players allowed";
                     return;
                 }
-
             }
             else
             {
@@ -55,7 +50,7 @@ namespace GooseGameWpf
                 tblGameOver.Text = "";
                 ChangeLogonAccess(true);
             }
-           
+
             RefreshAllGridPieceLocation();
         }
 
@@ -69,8 +64,6 @@ namespace GooseGameWpf
             txUser2Name.IsEnabled = (bool)(v & !chbLogonPlayer2.IsChecked);
             txUser3Name.IsEnabled = (bool)(v & !chbLogonPlayer3.IsChecked);
             txUser4Name.IsEnabled = (bool)(v & !chbLogonPlayer4.IsChecked);
-
-
         }
 
         private void RollButton_Click(object sender, RoutedEventArgs e)
@@ -79,30 +72,26 @@ namespace GooseGameWpf
             RefreshAllGridPieceLocation();
             tblGameOver.Background = new SolidColorBrush(Colors.LightGray);
             tblGameOver.Foreground = new SolidColorBrush(viewModel.GetColorFromConsoleColor(viewModel.GameOverColour));
-
         }
-
 
         private void SetGridPieceLocation(IPiece piece, int index)
         {
             MakeIndexBasedRelocation(index,
                 viewModel.GetGridCellPointDestination(piece.PieceCurrentSpace.Index, index));
-        }   
+        }
+
         private void RefreshAllGridPieceLocation()
         {
-            
-            for(int i=0; i< viewModel.Game.ActiveBoard.Pieces.Count; i++)
+            for (int i = 0; i < viewModel.Game.ActiveBoard.Pieces.Count; i++)
             {
                 IPiece piece = viewModel.Game.ActiveBoard.Pieces[i];
                 SetGridPieceLocation(piece, i);
-
             }
-
         }
+
         private void MakeIndexBasedRelocation(int index, Point point)
         {
-
-            switch (index) 
+            switch (index)
             {
                 case 0:
                     {
@@ -130,43 +119,41 @@ namespace GooseGameWpf
                     }
                 default:
                     { break; }
-
             }
         }
+
         private void CleanUpAllPiecesParking()
         {
-            for(int i=0; i<4;i++)
+            for (int i = 0; i < 4; i++)
             {
                 SetPieceParking(i, new BitmapImage(new Uri(viewModel.DefaultPieceIcon, UriKind.Relative)));
-
             }
-
         }
+
         private void RefreshAllGridPiecesParking()
         {
             CleanUpAllPiecesParking();
             int i = 0;
-            foreach(var piece in viewModel.Game.ActiveBoard.Pieces)
+            foreach (var piece in viewModel.Game.ActiveBoard.Pieces)
             {
                 SetPieceParking(i, new BitmapImage(new Uri(viewModel.Game.ActiveBoard.Pieces[i].PieceShape.Picture, UriKind.Relative)));
                 i++;
             }
-
-
         }
-        private void SetPieceParking(int index, ImageSource  source)
+
+        private void SetPieceParking(int index, ImageSource source)
         {
-            switch(index)
+            switch (index)
             {
                 case 0:
                     {
                         PieceParking00.Source = source;
                         break;
                     }
-                case 1: 
+                case 1:
                     {
                         PieceParking01.Source = source;
-                        break; 
+                        break;
                     }
                 case 2:
                     {
@@ -181,8 +168,8 @@ namespace GooseGameWpf
                 default:
                     break;
             }
-
         }
+
         private void HandleLogUnchecked(object sender, RoutedEventArgs e)
         {
             viewModel.GameOver = "";
@@ -208,16 +195,15 @@ namespace GooseGameWpf
             txUser1Name.Text = viewModel.UserNames[0];
             txUser1Name.IsEnabled = true;
             RefreshAllGridPiecesParking();
-
         }
-
 
         private void HandleCheckUser2(object sender, RoutedEventArgs e)
         {
             txUser2Name.IsEnabled = false;
             viewModel.AddUser(txUser2Name.Text, PiecesColour.Green);
             RefreshAllGridPiecesParking();
-        } 
+        }
+
         private void HandleUncheckedUser2(object sender, RoutedEventArgs e)
         {
             viewModel.ClearUser(PiecesColour.Green);
@@ -232,6 +218,7 @@ namespace GooseGameWpf
             viewModel.AddUser(txUser3Name.Text, PiecesColour.Red);
             RefreshAllGridPiecesParking();
         }
+
         private void HandleUncheckedUser3(object sender, RoutedEventArgs e)
         {
             viewModel.ClearUser(PiecesColour.Red);
@@ -239,12 +226,14 @@ namespace GooseGameWpf
             txUser3Name.IsEnabled = true;
             RefreshAllGridPiecesParking();
         }
+
         private void HandleCheckUser4(object sender, RoutedEventArgs e)
         {
             txUser4Name.IsEnabled = false;
             viewModel.AddUser(txUser4Name.Text, PiecesColour.Yellow);
             RefreshAllGridPiecesParking();
         }
+
         private void HandleUncheckedUser4(object sender, RoutedEventArgs e)
         {
             viewModel.ClearUser(PiecesColour.Yellow);

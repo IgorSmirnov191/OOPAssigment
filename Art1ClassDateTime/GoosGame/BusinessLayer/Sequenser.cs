@@ -21,10 +21,11 @@ namespace GooseGame
         private Queue<IPiece> TurnContainer { get; set; }
 
         public string TurnLog { get; set; }
+
         public Tuple<bool, string> Start()
         {
             TurnContainer = new Queue<IPiece>();
-           
+
             if (!PrepareTurnContainer())
             {
                 TurnLog = "There are no players in the game! ";
@@ -33,24 +34,23 @@ namespace GooseGame
             }
             string ruleslog = "Turn 0: ";
             _logger.Log(ruleslog);
-            return Tuple.Create(true,"Good luck! ");
+            return Tuple.Create(true, "Good luck! ");
         }
 
         public void Stop()
         {
             TurnCount = 0;
-            if (TurnContainer!=null)
+            if (TurnContainer != null)
             {
                 TurnContainer.Clear();
             }
         }
 
-        public Tuple<bool,string> Roll()
+        public Tuple<bool, string> Roll()
         {
-           
             bool stopgame = false;
             var stopgamemessage = Tuple.Create(stopgame, TurnLog);
-           
+
             DiceRoller dice = this.Board.DiceRoller;
             dice?.Roll();
             SpaceForward = dice.DicesScore;
@@ -121,7 +121,6 @@ namespace GooseGame
                         SpaceForward = BackForward ? SpaceForward * (-1) : SpaceForward; //reverse goos
                         wonmessage = StartAction(spiece, MakeTurn(spiece));
                         break;
-                    
                     }
                 case Rules.ActionRules.GoTo12:
                     {
@@ -202,8 +201,8 @@ namespace GooseGame
             }
             ISpace space = this.Board.Spaces[forwardIndex];
             SpaceForward = Board.DiceRoller.DicesScore;
-            string _spaceName = space.Type != SpaceTypes.StaticSpace? $"{space.Name} {space.Index}":$"{space.Name}";
-            string _action = space.Action == Rules.ActionRules.None ? "": $"with {space.Action}";
+            string _spaceName = space.Type != SpaceTypes.StaticSpace ? $"{space.Name} {space.Index}" : $"{space.Name}";
+            string _action = space.Action == Rules.ActionRules.None ? "" : $"with {space.Action}";
             string ruleslog = $"{current.PiecePlayer.Name} from {current.PieceCurrentSpace.Index} with {SpaceForward} eyes ({this.Board.DiceRoller.Scoores[0].ToString()}+{this.Board.DiceRoller.Scoores[1].ToString()}) relocate to {_spaceName} {_action} . ";
             TurnLog += ruleslog;
             _logger.Log(ruleslog);

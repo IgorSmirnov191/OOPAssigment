@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Money
 {
@@ -21,13 +17,13 @@ namespace Money
         public static void DisplayTransactionStartAccountInfo(string fieldName, string fieldNumber, double fieldSaldo)
         {
             Console.WriteLine($"Transaction benaderd voor rekening : {fieldName} {fieldNumber} Saldo: e{fieldSaldo}");
- 
         }
+
         public static void DisplayTransactionSuccessAccountInfo(string fieldName, string fieldNumber, double fieldSaldo)
         {
             Console.WriteLine($"Transaction endigd. Success. : {fieldName} {fieldNumber} Saldo: e{fieldSaldo}");
-
         }
+
         public static void DisplayTransactionAddMoneyInfo(double amount)
         {
             Console.WriteLine($"In transaction : Voeg Geld Toe. e{amount}");
@@ -42,6 +38,7 @@ namespace Money
         {
             Console.WriteLine($"In transaction : Rente berekeren. e{amount}");
         }
+
         public static void DisplayValidationError(string fieldName)
         {
             Console.WriteLine($"You did not give us a valid {fieldName} !");
@@ -49,20 +46,19 @@ namespace Money
 
         public static void AccountLockingError()
         {
-
             Console.WriteLine("Account is locked.");
         }
+
         public static void OperationFoutEnterToClose(string option)
         {
             Console.Write($"{option} Press enter to close...");
             Console.ReadLine();
         }
-        
+
         public static void EndApplicationEnterKeyToClose()
         {
             Console.Write("Press enter to close...");
             Console.ReadLine();
         }
-
     }
 }

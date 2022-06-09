@@ -20,6 +20,7 @@ namespace BankManager
 
         public string Name
         { get { return name; } set { name = value; } }
+
         public string Number
         { get { return number; } set { number = value; } }
 
@@ -56,7 +57,7 @@ namespace BankManager
             else
             {
                 this.amount += amount;
-                Console.WriteLine($"Account Naam: { this.name} Gestorte bedrag: {amount}euro. Een nieuw saldo :{this.amount}euro");
+                Console.WriteLine($"Account Naam: {this.name} Gestorte bedrag: {amount}euro. Een nieuw saldo :{this.amount}euro");
             }
 
             return amount;

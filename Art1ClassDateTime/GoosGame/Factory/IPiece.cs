@@ -10,7 +10,7 @@ namespace GooseGame
         Player PiecePlayer { get; set; }
         int LeftRollsToMiss { get; set; }
         bool TurnOffUntilAnother { get; set; }
-        void LocateTo(ISpace space);
 
+        void LocateTo(ISpace space);
     }
 }

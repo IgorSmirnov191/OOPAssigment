@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
-
 
 namespace GooseGameWpf.Models
 {
-    public enum GameStatus { None, Idle, Error, Abort };
-    public enum PiecesColour { Blue = 9, Green, Red = 12, Yellow = 14 };
+    public enum GameStatus
+    { None, Idle, Error, Abort };
+
+    public enum PiecesColour
+    { Blue = 9, Green, Red = 12, Yellow = 14 };
+
     public class Elements
     {
         public GameStatus GameCurrentStatus { get; set; } = GameStatus.None;
@@ -20,7 +19,6 @@ namespace GooseGameWpf.Models
                 { PiecesColour.Green, "Images/PieceGreen.png" },
                 { PiecesColour.Red, "Images/PieceRed.png" },
                 { PiecesColour.Yellow, "Images/PieceYellow.png" },
-
         };
 
         public static IDictionary<int, string> diceIcons = new Dictionary<int, string>
@@ -32,8 +30,8 @@ namespace GooseGameWpf.Models
                 { 4, "Images/DiceFour.png" },
                 { 5, "Images/DiceFive.png" },
                 { 6, "Images/DiceSix.png" },
-
         };
+
         public static IDictionary<int, IList<Point>> spieceParking = new Dictionary<int, IList<Point>>
         {
                 { 0, new List<Point> { new Point(9,8), new Point(9,9), new Point(10,8), new Point(10,9) } }, //Parking
@@ -100,8 +98,6 @@ namespace GooseGameWpf.Models
                 { 61, new List<Point> { new Point(13,6), new Point(12,6), new Point(12,7), new Point(11,7) } },
                 { 62, new List<Point> { new Point(13,7), new Point(12,8), new Point(13,8), new Point(14,8) } },
                 { 63, new List<Point> { new Point(10,15), new Point(10,15), new Point(10,15), new Point(10,15) } } //End
-
-
         };
     }
 }

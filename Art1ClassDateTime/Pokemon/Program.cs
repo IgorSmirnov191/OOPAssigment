@@ -23,7 +23,7 @@ namespace Pokemon
 
             LogBattle(pokemon1, pokemon2, Pokemon.Battle(pokemon1, pokemon2));
         }
-        
+
         private static void LogBattle(Pokemon pokemon1, Pokemon pokemon2, int battle)
         {
             switch (battle)

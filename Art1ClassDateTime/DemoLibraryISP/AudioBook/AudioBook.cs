@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DemoLibraryISP
 {
@@ -16,17 +12,16 @@ namespace DemoLibraryISP
         public int Pages { get; set; } = -1;
         public string Title { get; set; }
 
-        public int RuntimeInMinutes { get; set; } 
+        public int RuntimeInMinutes { get; set; }
 
         public void CheckIn()
         {
-           Borrower = "";
-
+            Borrower = "";
         }
 
         public void CheckOut(string borrower)
         {
-           Borrower = borrower;
+            Borrower = borrower;
             BorrowerDate = DateTime.Now;
         }
 

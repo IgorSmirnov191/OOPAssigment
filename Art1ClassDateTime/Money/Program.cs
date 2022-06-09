@@ -1,19 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Money
 {
     public class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-
             double basicCapital = 1500.67;
-            
-            IRekening rekening = RekeningCapture.Capture(RekeningCapture.GetRekening("ProRekening",basicCapital));
+
+            IRekening rekening = RekeningCapture.Capture(RekeningCapture.GetRekening("ProRekening", basicCapital));
 
             bool isAccountValid = RekeningValidator.Validate(rekening);
 
@@ -34,7 +29,6 @@ namespace Money
             }
 
             StandardMessages.EndApplicationEnterKeyToClose();
-
         }
     }
 }
